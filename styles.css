@@ -1,19 +1,20 @@
 .header {
-    height: 15vh;
+    height: 9vh;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
+    
     display: flex;
     justify-content: center;
-
-
+    
+    
 }
 
 .container {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: flex;
     justify-content: center;
     align-content: start;
 
-    height: 80vh;
+    height: 89vh;
 }
 
 .listings {
@@ -36,5 +37,14 @@
     border-color: rgb(56, 155, 209);
     border-width: 2px;
     border-radius: 9px;
-    background-color: gray;
+    background-color: rgb(215, 215, 215);
+}
+
+.item > img {
+    width: 100%;
+    height: auto;
+}
+
+.item > h3, p {
+    margin-left: 1rem;
 }
