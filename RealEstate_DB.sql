@@ -1,4 +1,5 @@
 -- Create and use DB
+DROP DATABASE IF EXISTS RealEstate_DB;
 CREATE DATABASE RealEstate_DB;
 USE RealEstate_DB;
 
@@ -56,3 +57,62 @@ INSERT property (id, title, year, description, price, city, state, thumbnail) VA
 (UUID_TO_BIN(UUID()), 'Lakefront Family Home', 2003, 'Spacious 5-bedroom home with a large deck and private dock.', 1200000, 'Lake Oswego', 'OR', 'https://images.unsplash.com/photo-1600585153053-ecf42bbff3bb?w=2670&auto=format&fit=crop'),
 (UUID_TO_BIN(UUID()), 'Minimalist Mountain Chalet', 2019, 'Sleek Scandinavian-inspired design with panoramic mountain views.', 1870000, 'Jackson', 'WY', 'https://images.unsplash.com/photo-1600585153060-f0a3b5e30f6d?w=2670&auto=format&fit=crop'),
 (UUID_TO_BIN(UUID()), 'Urban Industrial Loft', 2012, 'Open-plan living space with exposed brick and modern fixtures.', 650000, 'Portland', 'OR', 'https://images.unsplash.com/photo-1600585153063-d9fd636f1c35?w=2670&auto=format&fit=crop');
+
+
+INSERT INTO property_firms (property_id, firm_id)
+VALUES (
+  (SELECT id FROM property WHERE city = 'Portland' LIMIT 1),
+  (SELECT id FROM firm WHERE state = 'OR' LIMIT 1)
+);
+
+INSERT INTO property_firms (property_id, firm_id)
+VALUES (
+  (SELECT id FROM property WHERE city = 'Asheville' LIMIT 1),
+  (SELECT id FROM firm WHERE state = 'FL' LIMIT 1)
+);
+
+INSERT INTO property_firms (property_id, firm_id)
+VALUES (
+  (SELECT id FROM property WHERE city = 'Boston' LIMIT 1),
+  (SELECT id FROM firm WHERE state = 'IL' LIMIT 1)
+);
+
+INSERT INTO property_firms (property_id, firm_id)
+VALUES (
+  (SELECT id FROM property WHERE city = 'Jackson' LIMIT 1),
+  (SELECT id FROM firm WHERE state = 'MN' LIMIT 1)
+);
+
+INSERT INTO property_firms (property_id, firm_id)
+VALUES (
+  (SELECT id FROM property WHERE city = 'Lake Oswego' LIMIT 1),
+  (SELECT id FROM firm WHERE state = 'OR' LIMIT 1)
+);
+
+INSERT INTO property_firms (property_id, firm_id)
+VALUES (
+  (SELECT id FROM property WHERE city = 'Palm Springs' LIMIT 1),
+  (SELECT id FROM firm WHERE state = 'CA' LIMIT 1)
+);
+
+INSERT INTO property_firms (property_id, firm_id)
+VALUES (
+  (SELECT id FROM property WHERE city = 'Malibu' LIMIT 1),
+  (SELECT id FROM firm WHERE state = 'CA' LIMIT 1)
+);
+
+INSERT INTO property_firms (property_id, firm_id)
+VALUES (
+  (SELECT id FROM property WHERE city = 'Denver' LIMIT 1),
+  (SELECT id FROM firm WHERE state = 'AZ' LIMIT 1)
+);
+
+INSERT INTO property_firms (property_id, firm_id)
+VALUES (
+  (SELECT id FROM property WHERE city = 'Lake Tahoe' LIMIT 1),
+  (SELECT id FROM firm WHERE state = 'TX' LIMIT 1)
+);
+
+SELECT *, BIN_TO_UUID(id) FROM property;
+
+DELETE FROM property WHERE id = UUID_TO_BIN('011322a0-14d2-11f0-931a-47f90a484996');
