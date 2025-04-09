@@ -11,10 +11,27 @@ function changeDescription(descriptionNumber, newDescription) {
     document.getElementById("desc_" + descriptionNumber).textContent = newDescription;
 }
 
-changeImgSrc(3, 'https://images.unsplash.com/photo-1741866987680-5e3d7f052b87?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-changeItemName(3, "Wonderful Lake House");
-changeDescription(3, "Wonderful house situated in a beautiful Canadian lake.")
+// Insert the DB information
 
+async function loadFeaturedHouses() {
+    const url = 'http://127.0.0.1:8080/featured-properties';
+    let response = await fetch(url);
+    
 
+    if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+    }
+    else {
+        let featured_houses = await response.json();
 
+        console.log(featured_houses)
+        
+        for (let i = 0; i < 4; i++) {
+            changeImgSrc(i+1, featured_houses[i].thumbnail);
+            changeItemName(i+1, featured_houses[i].title);
+            changeDescription(i+1, featured_houses[i].description);
+        }
+    }
+}
 
+loadFeaturedHouses();

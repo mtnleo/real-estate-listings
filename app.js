@@ -1,11 +1,20 @@
 import express from 'express';
+import cors from 'cors';
 import { RealEstateModel } from './models/mysql/realestate-db.js';
 
 const app = express();
 
+app.use(cors())
+
 app.get("/properties", async (req, res) => {
     const properties = await RealEstateModel.getAllProperties();
     res.send(properties);
+
+});
+
+app.get("/featured-properties", async (req, res) => {
+    const featured = await RealEstateModel.getFeaturedProperties();
+    res.send(featured);
 
 });
 

@@ -29,10 +29,21 @@ const pool = mysql.createPool(config).promise();
 export class RealEstateModel {
     static async getAllProperties () {
         const result = await pool.query(
-            'SELECT BIN_TO_UUID(id) AS id, title, price, city, state, year, description, thumbnail FROM property'
+            'SELECT BIN_TO_UUID(id) AS id, title, price, city, state, year, description, thumbnail FROM property ORDER BY price DESC'
         );
 
         return result[0]; // [0] because I just want the rows
+    }
+
+    static async getFeaturedProperties() {
+        const result = await pool.query(
+            `SELECT BIN_TO_UUID(id) AS id, title, price, city, state, year, description, thumbnail 
+             FROM property 
+             ORDER BY price DESC
+             LIMIT 4 `
+        );
+        
+        return result[0];
     }
 
     static async getAllFirms () {
