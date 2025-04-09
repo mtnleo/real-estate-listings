@@ -24,27 +24,12 @@ const config = {
 // We provide mysql2 the config information for the connection
 const pool = mysql.createPool(config).promise(); 
 
-
-async function createProperty(title, year, description, price, city, state, thumbnail) {
-    let added =  await pool.query(`
-        INSERT INTO property (id, title, year, description, price, city, state, thumbnail)
-        VALUES (UUID_TO_BIN(UUID()), ?, ?, ?, ?, ?, ?, ?)
-        `, [title, year, description, price, city, state, thumbnail]);
-    console.log(added);
-}
-
-
-createProperty("Mountain View Cabin", 2002, 'Beautiful cabin with a mountain view of the Rockies', 650000, 'Basalt', 'CO', 'https://images.unsplash.com/photo-1597256817041-0c75c0633658?q=80&w=1149&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-const [result] = await pool.query(
-    'SELECT *, BIN_TO_UUID(id) AS UUID FROM property'
-);
-console.log(result)
 // Main functions
 
 export class RealEstateModel {
     static async getAllProperties () {
         const result = await pool.query(
-            'SELECT *, BIN_TO_UUID(id) AS UUID FROM property'
+            'SELECT BIN_TO_UUID(id) AS id, title, price, city, state, year, description, thumbnail FROM property'
         );
 
         return result[0]; // [0] because I just want the rows
