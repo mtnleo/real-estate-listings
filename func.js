@@ -11,9 +11,16 @@ function changeDescription(descriptionNumber, newDescription) {
     document.getElementById("desc_" + descriptionNumber).textContent = newDescription;
 }
 
+function changeButton(buttonNumber, newId) {
+    // Add ID and OnClick()
+    let button = document.getElementById("btn_" + buttonNumber);
+
+    button.href = `item.html?id=${newId}`;
+}
+
 // Insert the DB information
 
-async function getClickedHouse(id) {
+async function getClickedProperty(id) {
     const url = `http://127.0.0.1:8080/properties/${id}`;
     let response = await fetch(url);
 
@@ -23,9 +30,13 @@ async function getClickedHouse(id) {
     else {
         let property = await response.json();
 
+        console.log('Property: ')
+        console.log(property)
+
         return property;
     }
 }
+
 
 async function loadFeaturedProperties() {
     const url = 'http://127.0.0.1:8080/featured-properties';
@@ -42,8 +53,17 @@ async function loadFeaturedProperties() {
             changeImgSrc(i+1, featured_houses[i].thumbnail);
             changeItemName(i+1, featured_houses[i].title);
             changeDescription(i+1, featured_houses[i].description);
+            changeButton(i+1, featured_houses[i].id)
         }
     }
 }
 
-loadFeaturedProperties();
+if(window.location.href.includes('index')) {
+    loadFeaturedProperties();
+}
+
+if(window.location.href.includes('item')) {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    console.log(id);
+}
