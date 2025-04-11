@@ -12,6 +12,14 @@ app.get("/properties", async (req, res) => {
 
 });
 
+app.get("/properties/:id", async (req, res) => {
+    const id = req.params.id;
+    const property = await RealEstateModel.getPropertyById(id);
+    res.send(property);
+
+});
+
+
 app.get("/featured-properties", async (req, res) => {
     const featured = await RealEstateModel.getFeaturedProperties();
     res.send(featured);

@@ -58,7 +58,7 @@ export class RealEstateModel {
         const result = await pool.query(
             `SELECT *
             FROM property
-            WHERE BIN_TO_UUID(id) = ?`, [id]
+            WHERE id = UUID_TO_BIN(?)`, [id]
         )
 
         return result[0];

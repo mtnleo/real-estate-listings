@@ -117,3 +117,4 @@ SELECT *, BIN_TO_UUID(id) FROM property;
 
 UPDATE property SET thumbnail = 'https://images.unsplash.com/photo-1626107772493-3e1f1d7308f0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' WHERE id LIKE UUID_TO_BIN('bc4aba6e-149c-11f0-931a-47f90a484996');
 
+SELECT name FROM properties WHERE id = BIN_TO_UUID('bc4aba6e-149c-11f0-931a-47f90a484996')
