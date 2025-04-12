@@ -64,6 +64,18 @@ export class RealEstateModel {
         return result[0];
     }
 
+    static async getFirmNameById(id) {
+        const [result] = await pool.query(
+            `SELECT f.name
+            FROM firm f
+            INNER JOIN property_firms AS pf ON pf.firm_id = f.id
+            INNER JOIN property p ON pf.property_id = p.id
+            WHERE p.id = UUID_TO_BIN(?);`, [id]
+        )
+
+        return result;
+    }
+
     // ADD
     static async createProperty(title, year, description, price, city, state, thumbnail) {
         await pool.query(`
