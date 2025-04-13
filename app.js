@@ -23,7 +23,7 @@ app.get("/properties/:id", async (req, res) => {
 
 });
 
-app.get("/firms-names/:id", async (req, res) => {
+app.get("/firm-name/:id", async (req, res) => {
     const id = req.params.id;
     const firm_name = await RealEstateModel.getFirmNameById(id);
     res.send(firm_name);
@@ -40,7 +40,7 @@ app.get("/featured-properties", async (req, res) =>  {
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).send('Something broke!');
+    res.status(500).send('Something broke!', err);
 
 });
 

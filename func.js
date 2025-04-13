@@ -18,6 +18,23 @@ function changeButton(buttonNumber, newId) {
     button.href = `item.html?id=${newId}`;
 }
 
+// Item's page
+
+function loadPropertyInfo(propertyObject) {
+    document.getElementById('item-thumbnail').src = propertyObject.thumbnail;
+    document.getElementById('item-title').textContent = propertyObject.title;
+    document.getElementById('item-price').textContent = propertyObject.price;
+    document.getElementById('item-city').textContent = propertyObject.city;
+    document.getElementById('item-state').textContent = propertyObject.state;
+    document.getElementById('item-year').textContent = propertyObject.year;
+    document.getElementById('item-description').textContent = propertyObject.description;
+    
+}
+
+function loadPropertySeller(sellerName) {
+    document.getElementById('item-seller').textContent = sellerName;
+}
+
 // Insert the DB information
 
 async function getClickedProperty(id) {
@@ -58,12 +75,43 @@ async function loadFeaturedProperties() {
     }
 }
 
+async function loadProperty() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    console.log(id);
+
+    // Paste all the data on the DOM
+    let response_p = await fetch(`http://127.0.0.1:8080/properties/${id}`);
+    if(!response_p.ok) {
+        console.log("There was a problem loading the property object.");
+    }
+    else {
+        let [propertyObject] = await response_p.json();
+
+        loadPropertyInfo(propertyObject);
+    }
+
+    // Get and paste the Seller's name
+    let response_f_n = await fetch(`http://127.0.0.1:8080/firm-name/${id}`);
+
+    if(!response_f_n.ok) {
+        console.log("There was a problem loading the firm name object.");
+    }
+    else {
+        let [firmNameObject] = await response_f_n.json();
+
+        loadPropertySeller(firmNameObject.name);
+    }
+}
+
+//// CHECK WINDOW AND CALL FUNCTION
+
 if(window.location.href.includes('index')) {
     loadFeaturedProperties();
 }
 
 if(window.location.href.includes('item')) {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
-    console.log(id);
+    window.addEventListener("DOMContentLoaded", () => {
+        loadProperty();
+    });
 }
