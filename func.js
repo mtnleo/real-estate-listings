@@ -1,17 +1,33 @@
-function changeImgSrc(imgNumber, newUrl) {
-    document.getElementById("img_" + imgNumber).src = newUrl;
+function changePropertyImgSrc(imgNumber, newUrl) {
+    document.getElementById("p_img_" + imgNumber).src = newUrl;
 
 }
 
-function changeItemName(itemNumber, newName) {
-    document.getElementById("name_" + itemNumber).textContent = newName;
+function changePropertyTitle(itemNumber, newName) {
+    document.getElementById("p_title_" + itemNumber).textContent = newName;
 }
 
-function changeDescription(descriptionNumber, newDescription) {
+function changePropertyDescription(descriptionNumber, newDescription) {
     document.getElementById("desc_" + descriptionNumber).textContent = newDescription;
 }
 
-function changeButton(buttonNumber, newId) {
+function changePropertyCity(cityNumber, newCity) {
+    document.getElementById("p_city_" + cityNumber).textContent = newCity + ',';
+}
+
+function changePropertyState(stateNumber, newState) {
+    document.getElementById("p_state_" + stateNumber).textContent = newState;
+}
+
+function changePropertyPrice(priceNumber, newPrice) {
+    document.getElementById("p_price_" + priceNumber).textContent = newPrice;
+}
+
+function changePropertyYear(yearNumber, newYear) {
+    document.getElementById("p_year_" + yearNumber).textContent = newYear;
+}
+
+function changePropertyButton(buttonNumber, newId) {
     // Add ID and OnClick()
     let button = document.getElementById("btn_" + buttonNumber);
 
@@ -67,10 +83,13 @@ async function loadFeaturedProperties() {
         let featured_houses = await response.json();
 
         for (let i = 0; i < 4; i++) {
-            changeImgSrc(i+1, featured_houses[i].thumbnail);
-            changeItemName(i+1, featured_houses[i].title);
-            changeDescription(i+1, featured_houses[i].description);
-            changeButton(i+1, featured_houses[i].id)
+            changePropertyImgSrc(i+1, featured_houses[i].thumbnail);
+            changePropertyTitle(i+1, featured_houses[i].title);
+            changePropertyButton(i+1, featured_houses[i].id)
+            changePropertyCity(i+1, featured_houses[i].city);
+            changePropertyState(i+1, featured_houses[i].state);
+            changePropertyPrice(i+1, featured_houses[i].price);
+            changePropertyYear(i+1, featured_houses[i].year);
         }
     }
 }
