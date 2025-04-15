@@ -39,8 +39,8 @@ function changePropertyButton(buttonNumber, newId) {
 function loadPropertyInfo(propertyObject) {
     document.getElementById('item-thumbnail').src = propertyObject.thumbnail;
     document.getElementById('item-title').textContent = propertyObject.title;
-    document.getElementById('item-price').textContent = propertyObject.price;
-    document.getElementById('item-city').textContent = propertyObject.city;
+    document.getElementById('item-price').textContent = formatPrice(propertyObject.price);
+    document.getElementById('item-city').textContent = propertyObject.city + ', ';
     document.getElementById('item-state').textContent = propertyObject.state;
     document.getElementById('item-year').textContent = propertyObject.year;
     document.getElementById('item-description').textContent = propertyObject.description;

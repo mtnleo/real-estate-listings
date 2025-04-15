@@ -11,18 +11,38 @@
             <img src="https://images.unsplash.com/photo-1743653537429-a94889a6fd47?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" id='item-thumbnail' alt="">
         </div>
         <div class="item-info">
-            <h2 id="item-title">Placeholder</h2>
+            <div class="item-titles">
+                <h2 id="item-title">Placeholder</h2>
+
+            </div>
             
             <div class="item-price-container">
                 <p id="item-price">$</p>
             </div>
 
             <div class="item-location">
-                <p id="item-city">City</p>
-                <p id="item-state">State</p>
-                <p id="item-year"></p>
+                <div class="city-state">
+                    <div class="pin-icon-container">
+                        <i data-lucide="map-pin"></i>
+
+                    </div>
+                    <p id="item-city">City</p>
+                    <p id="item-state">State</p>
+
+                </div>
+                <div class="item-year-container">
+                    <div class="calendar-icon-container">
+                        <i data-lucide="calendar"></i>
+
+                    </div>
+                    <p id="item-year">2020</p>
+
+                </div>
             </div>
-            <p id="item-description">Description</p>
+            <div class="item-description-container">
+                <p id="item-description">Description</p>
+
+            </div>
             
             <div class="item-footer">
                 <p id="item-seller">Seller Name</p>
@@ -34,5 +54,12 @@
 
     <link rel="stylesheet" href="styles.css">
     <script src="func.js"></script>
+
+    <!--LUCIDE ICONS-->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!--<script src="https://unpkg.com/lucide@latest"></script>-->
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
