@@ -20,7 +20,7 @@ function changePropertyState(stateNumber, newState) {
 }
 
 function changePropertyPrice(priceNumber, newPrice) {
-    document.getElementById("p_price_" + priceNumber).textContent = newPrice;
+    document.getElementById("p_price_" + priceNumber).textContent = formatPrice(newPrice);
 }
 
 function changePropertyYear(yearNumber, newYear) {
@@ -49,6 +49,30 @@ function loadPropertyInfo(propertyObject) {
 
 function loadPropertySeller(sellerName) {
     document.getElementById('item-seller').textContent = sellerName;
+}
+
+
+// Formatting
+function formatPrice(price) {
+    price_string = price.toString();
+    let number = '$';
+    if (price < 1000) {
+        number += price_string;
+    } else if (price < 10000) {
+        number += price_string[0] + ',' + price_string.slice(1, 4)
+    } else if (price < 100000) {
+        number += price_string.slice(0, 2) + ',' + price_string.slice(3, 5)
+    } else if (price < 1000000) {
+        number += price_string.slice(0, 3) + ',' + price_string.slice(3, 6)
+    } else if (price < 10000000) {
+        number += price_string[0] + ',' + price_string.slice(1, 4) + ',' + price_string.slice(4, 7)
+    } else if (price < 100000000) {
+        number += price_string.splice(0, 2) + ',' + price_string.slice(2, 5) + ',' + price_string.slice(5, 7)
+    } else {
+        number += price_string.splice(0, 3) + ',' + price_string.slice(3, 6) + ',' + price_string.slice(6, 8)
+    }
+
+    return number;
 }
 
 // Insert the DB information
