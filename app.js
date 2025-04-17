@@ -1,14 +1,20 @@
 import express from 'express';
 import cors from 'cors';
+import crypto from 'node:crypto'
 import { RealEstateModel } from './models/mysql/realestate-db.js';
 
 const app = express();
 
+// ------------------ Middleware ------------------ \\
 app.use(cors())
+app.use(express.json())
 
 
+// ------------------ --------- -----------------  \\
+// ------------------  Queries ------------------  ||
+// ------------------ --------- -----------------  //
 
-// Queries
+// ------------------  GET  ------------------  ||
 
 app.get("/properties", async (req, res) => {
     const properties = await RealEstateModel.getAllProperties();
@@ -36,7 +42,18 @@ app.get("/featured-properties", async (req, res) =>  {
 
 });
 
-// Error handle
+// ------------------  POST  ------------------  ||
+
+app.post('/properties', async (req, res) => {
+    const { title, price, city, state, year, description, thumbnail } = req.body;
+    const response = await RealEstateModel.createProperty(crypto.randomUUID(), title, year, description, price, city, state, thumbnail);
+
+    res.status(201).send(response);
+})
+
+// ------------------ ------------ ------------------ \\
+// ------------------ Error Handle ------------------ \\
+// ------------------ ------------ ------------------ \\
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
@@ -44,7 +61,7 @@ app.use((err, req, res, next) => {
 
 });
 
-// Listen
+// -------------------- Listen -------------------- \\
 
 app.listen(8080, () => {
     console.log('Server is running on port 8080');

@@ -77,10 +77,12 @@ export class RealEstateModel {
     }
 
     // ADD
-    static async createProperty(title, year, description, price, city, state, thumbnail) {
-        await pool.query(`
+    static async createProperty(id, title, year, description, price, city, state, thumbnail) {
+        const [result] = await pool.query(`
             INSERT INTO property (id, title, year, description, price, city, state, thumbnail)
-            VALUES (UUID_TO_BIN(UUID()), ?, ?, ?, ?, ?, ?, ?)
-            `, [title, year, description, price, city, state, thumbnail]);
+            VALUES (UUID_TO_BIN(?), ?, ?, ?, ?, ?, ?, ?)
+            `, [id, title, year, description, price, city, state, thumbnail]);
+
+        return [this.getPropertyById(id)];
     }
 }
