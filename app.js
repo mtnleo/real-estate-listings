@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import crypto from 'node:crypto'
+import crypto from 'node:crypto';
+import { validateProperty } from './schemas/properties.js'
+
 import { RealEstateModel } from './models/mysql/realestate-db.js';
 
 const app = express();
@@ -45,10 +47,17 @@ app.get("/featured-properties", async (req, res) =>  {
 // ------------------  POST  ------------------  ||
 
 app.post('/properties', async (req, res) => {
-    const { title, price, city, state, year, description, thumbnail } = req.body;
-    const response = await RealEstateModel.createProperty(crypto.randomUUID(), title, year, description, price, city, state, thumbnail);
+    const result = await validateProperty(req.body);
+    console.log(result);
 
-    res.status(201).send(response);
+    if (result.error) {
+        return res.status(400).json( {error: JSON.parse(result.error.message)})
+    } else {
+            const { title, price, city, state, year, description, thumbnail } = req.body;
+            const response = await RealEstateModel.createProperty(crypto.randomUUID(), title, year, description, price, city, state, thumbnail);
+        
+            res.status(201).send(response);
+    }
 })
 
 // ------------------ ------------ ------------------ \\

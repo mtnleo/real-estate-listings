@@ -14,11 +14,11 @@ const config = {
 
 // .env version
 const config = { 
-    host: process.env.MYSQL_HOST, // 127.0.0.1 if this doesn't work
-    user: process.env.MYSQL_USER,
+    host: process.env.MYSQL_HOST ?? 'localhost', // 127.0.0.1 if this doesn't work
+    user: process.env.MYSQL_USER ?? 'root',
     port: 3306,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE
+    password: process.env.MYSQL_PASSWORD ?? '',
+    database: process.env.MYSQL_DATABASE ?? 'RealEstate_DB'
 }
 
 // We provide mysql2 the config information for the connection
@@ -27,6 +27,8 @@ const pool = mysql.createPool(config).promise();
 // Main functions
 
 export class RealEstateModel {
+    // READ
+
     static async getAllProperties () {
         const result = await pool.query(
             'SELECT BIN_TO_UUID(id) AS id, title, price, city, state, year, description, thumbnail FROM property ORDER BY price DESC'
@@ -76,13 +78,15 @@ export class RealEstateModel {
         return result;
     }
 
-    // ADD
+    // CREATE
     static async createProperty(id, title, year, description, price, city, state, thumbnail) {
         const [result] = await pool.query(`
             INSERT INTO property (id, title, year, description, price, city, state, thumbnail)
             VALUES (UUID_TO_BIN(?), ?, ?, ?, ?, ?, ?, ?)
             `, [id, title, year, description, price, city, state, thumbnail]);
 
-        return [this.getPropertyById(id)];
+        return this.getPropertyById(id)[1];
     }
+
+    // DELETE
 }
