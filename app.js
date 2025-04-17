@@ -17,7 +17,7 @@ app.use(express.json())
 // ------------------ --------- -----------------  //
 
 // ------------------  GET  ------------------  ||
-
+// Properties
 app.get("/properties", async (req, res) => {
     const properties = await RealEstateModel.getAllProperties();
     res.send(properties);
@@ -31,18 +31,32 @@ app.get("/properties/:id", async (req, res) => {
 
 });
 
-app.get("/firm-name/:id", async (req, res) => {
-    const id = req.params.id;
-    const firm_name = await RealEstateModel.getFirmNameById(id);
-    res.send(firm_name);
-});
-
-
 app.get("/featured-properties", async (req, res) =>  {
     const featured = await RealEstateModel.getFeaturedProperties();
     res.send(featured);
 
 });
+
+// Firms
+
+app.get('/firms', async (req, res) => {
+    const firms = await RealEstateModel.getAllFirms();
+    res.send(firms);
+});
+
+app.get('/firms/:id', async (req, res) => {
+    const id = req.params.id;
+    const firm = await RealEstateModel.getFirmById(id);
+    
+    res.send(firm);
+});
+
+app.get("/firm-name/:propertyid", async (req, res) => {
+    const property_id = req.params.propertyid;
+    const firm_name = await RealEstateModel.getFirmNameById(property_id);
+    res.send(firm_name);
+});
+
 
 // ------------------  POST  ------------------  ||
 
@@ -59,6 +73,7 @@ app.post('/properties', async (req, res) => {
             res.status(201).send(response);
     }
 })
+
 
 // ------------------ ------------ ------------------ \\
 // ------------------ Error Handle ------------------ \\

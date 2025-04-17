@@ -48,14 +48,6 @@ export class RealEstateModel {
         return result[0];
     }
 
-    static async getAllFirms () {
-        const result = await pool.query(
-            'SELECT * FROM firm'
-        );
-
-        return result[0];
-    }
-
     static async getPropertyById(id) {
         const result = await pool.query(
             `SELECT *
@@ -64,6 +56,25 @@ export class RealEstateModel {
         )
 
         return result[0];
+    }
+
+    static async getAllFirms () {
+        const result = await pool.query(
+            'SELECT * FROM firm'
+        );
+
+        return result[0];
+    }
+
+    static async getFirmById(id) {
+        const [result] = await pool.query(
+            `SELECT *
+            FROM firm
+            WHERE id = ?
+            `, [id]
+        );
+
+        return result;
     }
 
     static async getFirmNameById(id) {
