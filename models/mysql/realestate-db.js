@@ -99,5 +99,14 @@ export class RealEstateModel {
         return this.getPropertyById(id)[1];
     }
 
+    static async createFirm(name, city, state, established, email, website) {
+        const [result] = await pool.query(`
+            INSERT INTO firm (name, city, state, established, email, website)
+            VALUES (?, ?, ?, ?, ?, ?)
+            `, [name, city, state, established, email, website])
+
+        return result;
+    }
+
     // DELETE
 }

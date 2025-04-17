@@ -1,7 +1,8 @@
-import express from 'express';
+import express, { response } from 'express';
 import cors from 'cors';
 import crypto from 'node:crypto';
 import { validateProperty } from './schemas/properties.js'
+import { validateFirm } from './schemas/firms.js'
 
 import { RealEstateModel } from './models/mysql/realestate-db.js';
 
@@ -60,6 +61,8 @@ app.get("/firm-name/:propertyid", async (req, res) => {
 
 // ------------------  POST  ------------------  ||
 
+// Properties 
+
 app.post('/properties', async (req, res) => {
     const result = await validateProperty(req.body);
     console.log(result);
@@ -74,6 +77,22 @@ app.post('/properties', async (req, res) => {
     }
 })
 
+// Firms
+
+app.post('/firms', async (req, res) => {
+    const result = await validateFirm(req.body);
+    console.log(result)
+
+    if (result.error) {
+        return res.status(400).json( {error: JSON.parse(result.error.message)})
+    }
+    else {
+        const { name, city, state, established, email, website } = req.body;
+        const response = await RealEstateModel.createFirm(name, city, state, established, email, website);
+    }
+
+    res.send(response);
+})
 
 // ------------------ ------------ ------------------ \\
 // ------------------ Error Handle ------------------ \\
