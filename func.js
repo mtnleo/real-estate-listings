@@ -40,7 +40,7 @@ function loadPropertyInfo(propertyObject) {
     document.getElementById('item-thumbnail').src = propertyObject.thumbnail;
     document.getElementById('item-title').textContent = propertyObject.title;
     document.getElementById('item-price').textContent = formatPrice(propertyObject.price);
-    document.getElementById('item-city').textContent = propertyObject.city + ', ';
+    document.getElementById('item-city').textContent = propertyObject.city + ',';
     document.getElementById('item-state').textContent = propertyObject.state;
     document.getElementById('item-year').textContent = propertyObject.year;
     document.getElementById('item-description').textContent = propertyObject.description;
@@ -67,9 +67,9 @@ function formatPrice(price) {
     } else if (price < 10000000) {
         number += price_string[0] + ',' + price_string.slice(1, 4) + ',' + price_string.slice(4, 7)
     } else if (price < 100000000) {
-        number += price_string.splice(0, 2) + ',' + price_string.slice(2, 5) + ',' + price_string.slice(5, 7)
+        number += price_string.slice(0, 2) + ',' + price_string.slice(2, 5) + ',' + price_string.slice(5, 8)
     } else {
-        number += price_string.splice(0, 3) + ',' + price_string.slice(3, 6) + ',' + price_string.slice(6, 8)
+        number += price_string.slice(0, 3) + ',' + price_string.slice(3, 6) + ',' + price_string.slice(6, 9)
     }
 
     return number;
@@ -141,9 +141,10 @@ async function loadProperty() {
         console.log("There was a problem loading the firm name object.");
     }
     else {
-        let [firmNameObject] = await response_f_n.json();
+        let firmNameObject = await response_f_n.json();
 
-        loadPropertySeller(firmNameObject.name);
+        console.log(firmNameObject)
+        loadPropertySeller(firmNameObject[0].name);
     }
 }
 
