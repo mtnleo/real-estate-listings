@@ -2,81 +2,12 @@
     line-height: normal;
 }
 
-.header {
-    height: 9vh;
-
-    display: flex;
-    justify-content: center;
-    
+body {
+    background-color: #FFFF ;
+    background-image: url('./img/background-blob.svg');
+    background-repeat: no-repeat;
+    background-position-y: -30rem;
 }
-
-.container {
-    
-    display: flex;
-    justify-content: center;
-    align-content: start;
-
-    height: 89vh;
-}
-
-.listings {
-    display: grid;
-    gap: 25px;
-    margin-left: 2rem;
-    margin-right: 2rem;
-
-    grid-template-columns: repeat(2, minmax(25rem, 30rem));
-    grid-template-rows: repeat(2, minmax(23rem, 30rem));
-
-    max-width: 1100px;
-    padding: 1rem;
-}
-
-@media (max-width: 500px){
-    .listings {
-        display: grid;
-        gap: 25px;
-        margin-left: 2rem;
-        margin-right: 2rem;
-    
-        grid-template-columns: repeat(1, minmax(12rem, 30rem));
-        grid-template-rows: repeat(4, minmax(12rem, 30rem));
-    
-        max-width: 1100px;
-        padding: 1rem;
-    }
-}
-
-@media (max-width: 1100px){
-    .listings {
-        display: grid;
-        gap: 25px;
-        margin-left: 2rem;
-        margin-right: 2rem;
-    
-        grid-template-columns: repeat(1, minmax(25rem, 30rem));
-        grid-template-rows: repeat(4, minmax(20rem, 30rem));
-    
-        max-width: 1100px;
-        padding: 1rem;
-    }
-}
-
-@media (min-height: 1400px) {
-    .listings {
-        display: grid;
-        gap: 25px;
-        margin-left: 2rem;
-        margin-right: 2rem;
-    
-        grid-template-columns: repeat(2, minmax(25rem, 30rem));
-        grid-template-rows: repeat(2, minmax(23rem, 30rem));
-    
-        max-width: 1100px;
-        padding: 1rem;
-    }
-}
-
 
 .title {
     display: flex;
@@ -106,15 +37,6 @@ button {
     
 }
 */
-button:hover {
-    filter: drop-shadow(0px 0px 5px #a3a3a3);
-}
-
-a {
-    cursor: default;
-}
-
-
 /* Item HTML */
 .item-body {
     display: flex;
@@ -311,118 +233,4 @@ a {
 
 .property-container:hover .property-image {
     transform: scale(1);
-}
-
-/* ------------------------ PROPERTY INFORMATION CONTAINER ------------------------ */
-.property-information-container {
-    width: 100%;
-    height: 97%;
-
-    position: absolute;
-    z-index: 1;
-
-    display: flex;
-    justify-content: center;
-    align-items: end;
-
-    
-}
-
-.property-information {
-    background-color:rgba(233, 233, 233, 0.937);
-    width: 90%;
-    height: 25%;
-
-    border-radius: 15px;
-    z-index: 2;
-
-
-    display: grid;
-    grid-template-rows: repeat(3, minmax(1rem, 5rem));
-}
-
-.property-information > :nth-child(1) {
-    grid-row: 1 / 3;
-    grid-column: 1 / -1;
-}
-
-.property-information > :nth-child(2) {
-    grid-row: 3 / -1;
-    grid-column: 1 / -1;
-}
-
-/* ------------------------ PROPERTY INFORMATION HEADER ------------------------ */
-.property-information-header {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: repeat(2, minmax(1rem, 3rem));
-
-    padding: 5px;
-    border-bottom: 1px solid #d6d6d6;
-    margin-bottom: 6px;
-}
-
-.property-information-header > :nth-child(1) { /* Title */
-    grid-row: 1 / 2;
-    grid-column: 1 / 3;
-
-    display: flex;
-
-    font-size: large;
-    padding-left: 1rem;
-    padding-top: 5px;
-}
-
-.property-information-header > :nth-child(2) { /* Location */
-    grid-row: 2 / 3;
-    grid-column: 1 / 3;
-
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    color: #939393;
-}
-
-.property-state {
-    margin-left: 4px;
-}
-
-.property-information-header > :nth-child(3) { /* Button */
-    grid-row: 1 / -1;
-    grid-column: 3 / 4;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-
-    padding-top: 2px;
-
-}
-
-/* PROPERTY INFORMATION FOOTER */
-.property-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 4px;
-    margin-right: 8px;
-
-    padding-bottom: 15px;
-}
-
-.property-price {
-    font-size: larger;
-    font-weight: bold;
-
-    
-}
-
-.property-year {
-    color: #ababab;
-}
-
-.property-details-button-a {
-    height: 80%;
 }

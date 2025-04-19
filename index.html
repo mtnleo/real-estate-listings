@@ -4,13 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-com Layout</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>     
+    <link rel="stylesheet" href="styles.css">
+    <script src="func.js"></script>
+    
 </head>
 <body>
-    <div class="header">
-        <h1>Fullstack Practice </h1>
-    </div>
+    <!-- Navbar -->
+    <nav class="relative container mx-auto flex justify-between items-center p-4 m-2">
+      <h1 class="text-2xl text-green-500">REstate</h1>
+      <div class=" flex-row space-x-6 hidden md:flex">
+        <a href="#" >Properties</a>
+        <a href="#" >About Us</a>
+        <a href="#" >Contact Us</a>
+      </div>
+    </nav>
 
-    <div class="flex items-center justify-center">
+    <!-- Listings -->
+    <section id="listings">
+      <div class="flex items-center justify-center">
         <div class="grid max-w-[90%] grid-cols-1 gap-1 sm:gap-6 lg:grid-cols-2">
           <!-- Property 1 -->
           <div class="relative flex items-center justify-center sm:flex-row flex-col">
@@ -19,7 +32,7 @@
               <!-- Property Image-->
             </div>
       
-            <div class="w-full sm:absolute bottom-0 sm:left-1/2 sm:z-10 sm:w-5/6 sm:-translate-x-1/2 transform rounded-4xl bg-white/80 p-4 backdrop-blur-xs sm:bottom-0 sm:mb-2">
+            <div class="w-full sm:absolute bottom-0 sm:left-1/2 sm:z-10 sm:w-5/6 sm:-translate-x-1/2 transform rounded-3xl bg-white/80 p-4 backdrop-blur-sm sm:bottom-0 sm:mb-2">
               <div class="grid grid-rows-3">
                 <!-- Property Information Box -->
                 <!-- Property Header-->
@@ -33,7 +46,7 @@
       
                   <!--Details Button-->
                   <div class="row-span-2 mr-2 flex items-center justify-end">
-                    <a id="btn_1" class="rounded bg-sky-700 px-4 py-2 font-medium text-white hover:bg-sky-800" href="item.html"><button>Details</button></a>
+                    <a id="btn_1" class="rounded-full bg-emerald-500 px-4 py-2 font-medium text-white hover:bg-emerald-600"  href="item.html"><button>Details</button></a>
                   </div>
                 </div>
       
@@ -53,7 +66,7 @@
               <!-- Property Image-->
             </div>
       
-            <div class="w-full sm:absolute bottom-0 sm:left-1/2 sm:z-10 sm:w-5/6 sm:-translate-x-1/2 transform rounded-4xl bg-white/80 p-4 backdrop-blur-xs sm:bottom-0 sm:mb-2">
+            <div class="w-full sm:absolute bottom-0 sm:left-1/2 sm:z-10 sm:w-5/6 sm:-translate-x-1/2 transform rounded-3xl bg-white/80 p-4 backdrop-blur-sm sm:bottom-0 sm:mb-2">
               <div class="grid grid-rows-3">
                 <!-- Property Information Box -->
                 <!-- Property Header-->
@@ -67,7 +80,7 @@
       
                   <!--Details Button-->
                   <div class="row-span-2 mr-2 flex items-center justify-end">
-                    <a id="btn_2" class="rounded bg-sky-700 px-4 py-2 font-medium text-white hover:bg-sky-800" href="item.html"><button>Details</button></a>
+                    <a id="btn_2" class="rounded-full bg-emerald-500 px-4 py-2 font-medium text-white hover:bg-emerald-600"  href="item.html"><button>Details</button></a>
                   </div>
                 </div>
       
@@ -87,7 +100,7 @@
               <!-- Property Image-->
             </div>
       
-            <div class="w-full sm:absolute bottom-0 sm:left-1/2 sm:z-10 sm:w-5/6 sm:-translate-x-1/2 transform rounded-4xl bg-white/80 p-4 backdrop-blur-xs sm:bottom-0 sm:mb-2">
+            <div class="w-full sm:absolute bottom-0 sm:left-1/2 sm:z-10 sm:w-5/6 sm:-translate-x-1/2 transform rounded-3xl bg-white/80 p-4 backdrop-blur-sm sm:bottom-0 sm:mb-2">
               <div class="grid grid-rows-3">
                 <!-- Property Information Box -->
                 <!-- Property Header-->
@@ -101,7 +114,7 @@
       
                   <!--Details Button-->
                   <div class="row-span-2 mr-2 flex items-center justify-end">
-                    <a id="btn_3" class="rounded bg-sky-700 px-4 py-2 font-medium text-white hover:bg-sky-800" href="item.html"><button>Details</button></a>
+                    <a id="btn_3" class="rounded-full bg-emerald-500 px-4 py-2 font-medium text-white hover:bg-emerald-600"  href="item.html"><button>Details</button></a>
                   </div>
                 </div>
       
@@ -121,7 +134,7 @@
               <!-- Property Image-->
             </div>
       
-            <div class="w-full sm:absolute bottom-0 sm:left-1/2 sm:z-10 sm:w-5/6 sm:-translate-x-1/2 transform rounded-4xl bg-white/80 p-4 backdrop-blur-xs sm:bottom-0 sm:mb-2">
+            <div class="w-full sm:absolute bottom-0 sm:left-1/2 sm:z-10 sm:w-5/6 sm:-translate-x-1/2 transform rounded-3xl bg-white/80 p-4 backdrop-blur-sm sm:bottom-0 sm:mb-2">
               <div class="grid grid-rows-3">
                 <!-- Property Information Box -->
                 <!-- Property Header-->
@@ -135,7 +148,7 @@
       
                   <!--Details Button-->
                   <div class="row-span-2 mr-2 flex items-center justify-end">
-                    <a id="btn_4" class="rounded bg-sky-700 px-4 py-2 font-medium text-white hover:bg-sky-800" href="item.html"><button>Details</button></a>
+                    <a id="btn_4" class="rounded-full bg-emerald-500 px-4 py-2 font-medium text-white hover:bg-emerald-600" href="item.html"><button>Details</button></a>
                   </div>
                 </div>
       
@@ -149,10 +162,8 @@
           </div>
         </div>
       </div>
-      
+    </section>
+    
 
-    <link rel="stylesheet" href="styles.css">
-    <script src="func.js"></script>
-    <link href="src/output.css" rel="stylesheet">
 </body>
 </html>
