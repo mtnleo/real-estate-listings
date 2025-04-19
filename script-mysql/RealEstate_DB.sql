@@ -48,7 +48,7 @@ INSERT INTO firm (name, city, state, established, email, website) VALUES
 
 -- SELECT * FROM firm
 INSERT property (id, title, year, description, price, city, state, thumbnail) VALUES
-(UUID_TO_BIN(UUID()), 'Magical Mountain Lake Tahoe Home', 1975, 'Magical house located next to Californias most beautiful natural lake', 3700000,'Lake Tahoe', 'CA', 'https://images.unsplash.com/photo-1594771386350-7ff4d17afbc2?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+(UUID_TO_BIN(UUID()), 'Magical Mountain Lake Tahoe Home', 1975, 'Magical house located next to Californias most beautiful natural lake', 3700000, 'Lake Tahoe', 'CA', 'https://images.unsplash.com/photo-1594771386350-7ff4d17afbc2?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
 (UUID_TO_BIN(UUID()), 'Modern Downtown Loft', 2015, 'Stylish loft with city views and walking distance to restaurants and shops.', 725000, 'Denver', 'CO', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2670&auto=format&fit=crop'),
 (UUID_TO_BIN(UUID()), 'Cozy Cabin in the Woods', 1988, 'Secluded and peaceful 2-bedroom cabin surrounded by nature.', 430000, 'Asheville', 'NC', 'https://images.unsplash.com/photo-1600585152930-6f92dc0b63c9?w=2670&auto=format&fit=crop'),
 (UUID_TO_BIN(UUID()), 'Luxury Beachfront Villa', 2020, 'Stunning modern villa with private beach access and infinity pool.', 4500000, 'Malibu', 'CA', 'https://images.unsplash.com/photo-1600585153041-34c3ab83b1e9?w=2670&auto=format&fit=crop'),
@@ -79,14 +79,14 @@ VALUES (
 
 INSERT INTO property_firms (property_id, firm_id)
 VALUES (
-  (SELECT id FROM property WHERE city = 'Jackson' LIMIT 1),
-  (SELECT id FROM firm WHERE state = 'MN' LIMIT 1)
+  (SELECT id FROM property WHERE city = 'New York City' LIMIT 1),
+  (SELECT id FROM firm WHERE state = 'IL' LIMIT 1)
 );
 
 INSERT INTO property_firms (property_id, firm_id)
 VALUES (
-  (SELECT id FROM property WHERE city = 'Lake Oswego' LIMIT 1),
-  (SELECT id FROM firm WHERE state = 'OR' LIMIT 1)
+  (SELECT id FROM property WHERE city = 'New Jersey' LIMIT 1),
+  (SELECT id FROM firm WHERE state = 'FL' LIMIT 1)
 );
 
 INSERT INTO property_firms (property_id, firm_id)
@@ -114,10 +114,11 @@ VALUES (
 );
 
 SELECT *, BIN_TO_UUID(id) FROM property;
+SELECT * FROM firm;
 
 UPDATE property SET thumbnail = 'https://images.unsplash.com/photo-1626107772493-3e1f1d7308f0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' WHERE id LIKE UUID_TO_BIN('bc4aba6e-149c-11f0-931a-47f90a484996');
 
-SELECT title FROM property WHERE id = UUID_TO_BIN('bc4ab8e8-149c-11f0-931a-47f90a484996');
+SELECT title FROM property WHERE id = UUID_TO_BIN('3d097274-287a-4546-9eff-f8bd631ad81a');
 
 SELECT f.name
 FROM firm f
@@ -125,4 +126,9 @@ INNER JOIN property_firms AS pf ON pf.firm_id = f.id
 INNER JOIN property p ON pf.property_id = p.id
 WHERE p.id = UUID_TO_BIN('a74b4f78-17b9-11f0-9f06-79d0a4c4ec53');
 
+UPDATE property
+SET thumbnail = 'https://images.unsplash.com/photo-1613525041465-88225ec0122a?q=80&w=2712&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+WHERE id = UUID_TO_BIN("a74b511c-17b9-11f0-9f06-79d0a4c4ec53");
 
+DELETE FROM property
+WHERE id = UUID_TO_BIN('3d097274-287a-4546-9eff-f8bd631ad81a');
