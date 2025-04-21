@@ -9,6 +9,13 @@ body {
     background-position-y: -30rem;
 }
 
+#cta {
+    background-image: url('./img/cta-background-blob.svg');
+    background-repeat: no-repeat;
+    background-position-y: -25rem;
+    background-position-x: 5rem;
+}
+
 .title {
     display: flex;
     align-items: center;
