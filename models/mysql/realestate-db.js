@@ -108,5 +108,16 @@ export class RealEstateModel {
         return result;
     }
 
+    // UPDATE
+    static async updateProperty(id, title, year, description, price, city, state, thumbnail) {
+        await pool.query(`
+            UPDATE property
+            SET title = ?, year = ?, description = ?, price = ?, city = ?, state = ?, thumbnail = ?
+            WHERE id = UUID_TO_BIN(?)            
+            `, [title, year, description, price, city, state, thumbnail, id] );
+
+        return this.getPropertyById(id)[1];
+    }
+
     // DELETE
 }

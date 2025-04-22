@@ -28,3 +28,7 @@ const propertySchema = z.object({
 export function validateProperty(object) {
     return propertySchema.safeParseAsync(object)
 }
+
+export function validatePartialProperty(object) {
+    return propertySchema.partial().safeParseAsync(object);
+}

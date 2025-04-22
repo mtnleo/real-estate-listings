@@ -1,7 +1,7 @@
 import express, { response } from 'express';
 import cors from 'cors';
 import crypto from 'node:crypto';
-import { validateProperty } from './schemas/properties.js'
+import { validatePartialProperty, validateProperty } from './schemas/properties.js'
 import { validateFirm } from './schemas/firms.js'
 
 import { RealEstateModel } from './models/mysql/realestate-db.js';
@@ -93,6 +93,36 @@ app.post('/firms', async (req, res) => {
 
     res.send(response);
 })
+
+// ------------------  PUT  ------------------  ||
+app.put('/properties/:id', async (req, res) => {
+    const {id} = req.params;
+    let property;
+    try {
+        [property] = await RealEstateModel.getPropertyById(id);
+    } catch (err) {
+        res.status(400).json( {error: JSON.parse(err)})
+    } 
+
+    const result = await validatePartialProperty(req.body);
+
+    if(result.error) {
+        return res.status(400).json( {error: JSON.parse(result.error.message)})
+    } else {
+        const newProperty = {
+            ...property,
+            ...result.data
+            
+        } // Create an object with the fields I have from both results
+
+        console.log(newProperty);
+        const updatedProperty = await RealEstateModel.updateProperty(id, newProperty.title, newProperty.year, newProperty.description, newProperty.price, newProperty.city, newProperty.state, newProperty.thumbnail)
+
+        res.status(200).json(updatedProperty);
+    }
+
+})
+
 
 // ------------------ ------------ ------------------ \\
 // ------------------ Error Handle ------------------ \\
