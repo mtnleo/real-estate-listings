@@ -44,11 +44,14 @@ function loadPropertyInfo(propertyObject) {
     document.getElementById('item-state').textContent = propertyObject.state;
     document.getElementById('item-year').textContent = propertyObject.year;
     document.getElementById('item-description').textContent = propertyObject.description;
+    document.getElementById('item-sqft').textContent = propertyObject.sqft + ' sqft.';
+    document.getElementById('item-bedrooms').textContent = propertyObject.bedrooms;
+    document.getElementById('item-bathrooms').textContent = propertyObject.bathrooms;
     
 }
 
 function loadPropertySeller(sellerName) {
-    document.getElementById('item-seller').textContent = sellerName;
+    document.getElementById('seller-name').textContent = sellerName;
 }
 
 

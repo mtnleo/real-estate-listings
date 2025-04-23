@@ -44,7 +44,7 @@ button {
     
 }
 */
-/* Item HTML */
+/* Item HTML 
 .item-body {
     display: flex;
     align-content: center;
@@ -73,34 +73,34 @@ button {
     gap: 5px;
 }
 
-.item-info > :nth-child(1) { /* TITLE */
+.item-info > :nth-child(1) { /* TITLE 
     grid-row: 1 / 2;
     grid-column: 1 / 6;
 }
 
-.item-info > :nth-child(2) { /* PRICE */
+.item-info > :nth-child(2) { /* PRICE 
     grid-row: 2 / 3;
     grid-column: 1 / 4;
 
 }
 
-.item-info > :nth-child(3) {  /* LOCATION AND YEAR */
+.item-info > :nth-child(3) {  /* LOCATION AND YEAR 
     grid-row: 2 / 3;
     grid-column: 4 / -1;
 }
 
 
-.item-info > :nth-child(4) { /* DESCRIPTION */
+.item-info > :nth-child(4) { /* DESCRIPTION 
     grid-row: 3 / 4;
     grid-column: 1 / -1;
 }
 
-.item-info > :nth-child(5) {  /* FOOTER */
+.item-info > :nth-child(5) {  /* FOOTER 
     grid-row: 4 / 5;
     grid-column: 1 / -1;
 }
 
-/**/
+/*
 .item-titles {
     display: flex;
     flex-wrap: wrap;
