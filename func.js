@@ -51,7 +51,7 @@ function loadPropertyInfo(propertyObject) {
 }
 
 function loadFirm(firmObject) {
-    document.getElementById('firm-thumbnail').src = firmObject.src;
+    document.getElementById('firm-thumbnail').src = firmObject.thumbnail;
     document.getElementById('firm-name').textContent = firmObject.name;
     document.getElementById('firm-city').textContent = firmObject.city;
     document.getElementById('firm-state').textContent = firmObject.state;

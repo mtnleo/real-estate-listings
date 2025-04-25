@@ -79,7 +79,7 @@ export class RealEstateModel {
 
     static async getFirmByPropertyId(id) {
         const [result] = await pool.query(
-            `SELECT *
+            `SELECT f.name AS name, f.city AS city, f.state AS state, f.established AS established, f.email AS email, f.website AS website, f.thumbnail AS thumbnail
             FROM firm f
             INNER JOIN property_firms AS pf ON pf.firm_id = f.id
             INNER JOIN property p ON pf.property_id = p.id
