@@ -1,3 +1,4 @@
+
 function changePropertyImgSrc(imgNumber, newUrl) {
     document.getElementById("p_img_" + imgNumber).src = newUrl;
 
@@ -138,6 +139,7 @@ async function loadProperty() {
         let [propertyObject] = await response_p.json();
 
         loadPropertyInfo(propertyObject);
+        loadMap(propertyObject.city, propertyObject.state);
     }
 
     // Get and paste the Seller's object
@@ -154,6 +156,21 @@ async function loadProperty() {
     }
 }
 
+async function loadMap(city, state) {
+    const geoSearchProvider = new GeoSearch.OpenStreetMapProvider();
+
+    if(window.location.href.includes('item')) {
+    const [results] = await geoSearchProvider.search({ query: `${city}, ${state}` });
+    console.log(results.raw.lat, results.raw.lon);
+
+    let map = L.map('map').setView([results.raw.lat, results.raw.lon], 10);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    }
+}
+
 //// CHECK WINDOW AND CALL FUNCTION
 
 if(window.location.href.includes('index')) {
@@ -166,11 +183,13 @@ if(window.location.href.includes('item')) {
         loadProperty();
 
 
-        // Load map
+        /* Load map 
         let map = L.map('map').setView([51.505, -0.09], 13);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
+
+        */
     });
 }
