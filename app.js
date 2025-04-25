@@ -52,11 +52,13 @@ app.get('/firms/:id', async (req, res) => {
     res.send(firm);
 });
 
-app.get("/firm-name/:propertyid", async (req, res) => {
-    const property_id = req.params.propertyid;
-    const firm_name = await RealEstateModel.getFirmNameById(property_id);
-    res.send(firm_name);
+app.get('/firms-p/:id', async (req, res) => {
+    const id = req.params.id;
+    const firm = await RealEstateModel.getFirmByPropertyId(id);
+    
+    res.send(firm);
 });
+
 
 
 // ------------------  POST  ------------------  ||

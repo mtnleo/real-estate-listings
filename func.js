@@ -50,8 +50,11 @@ function loadPropertyInfo(propertyObject) {
     
 }
 
-function loadPropertySeller(sellerName) {
-    document.getElementById('seller-name').textContent = sellerName;
+function loadFirm(firmObject) {
+    document.getElementById('firm-thumbnail').src = firmObject.src;
+    document.getElementById('firm-name').textContent = firmObject.name;
+    document.getElementById('firm-city').textContent = firmObject.city;
+    document.getElementById('firm-state').textContent = firmObject.state;
 }
 
 
@@ -137,17 +140,17 @@ async function loadProperty() {
         loadPropertyInfo(propertyObject);
     }
 
-    // Get and paste the Seller's name
-    let response_f_n = await fetch(`http://127.0.0.1:8080/firm-name/${id}`);
+    // Get and paste the Seller's object
+    let response_f = await fetch(`http://127.0.0.1:8080/firms-p/${id}`);
 
-    if(!response_f_n.ok) {
-        console.log("There was a problem loading the firm name object.");
+    if(!response_f.ok) {
+        console.log("There was a problem loading the firm object.");
     }
     else {
-        let firmNameObject = await response_f_n.json();
+        let firmObject = await response_f.json();
 
-        console.log(firmNameObject)
-        loadPropertySeller(firmNameObject[0].name);
+        console.log(firmObject)
+        loadFirm(firmObject[0]);
     }
 }
 
