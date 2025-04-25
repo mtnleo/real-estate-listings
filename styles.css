@@ -29,6 +29,10 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+#map {
+    height: 240px;
+}
 /*
 button {
     padding: 11px;

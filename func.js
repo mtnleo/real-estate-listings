@@ -53,7 +53,7 @@ function loadPropertyInfo(propertyObject) {
 function loadFirm(firmObject) {
     document.getElementById('firm-thumbnail').src = firmObject.thumbnail;
     document.getElementById('firm-name').textContent = firmObject.name;
-    document.getElementById('firm-city').textContent = firmObject.city;
+    document.getElementById('firm-city').textContent = firmObject.city + ', ';
     document.getElementById('firm-state').textContent = firmObject.state;
 }
 
@@ -162,6 +162,15 @@ if(window.location.href.includes('index')) {
 
 if(window.location.href.includes('item')) {
     window.addEventListener("DOMContentLoaded", () => {
+        // Load property info
         loadProperty();
+
+
+        // Load map
+        let map = L.map('map').setView([51.505, -0.09], 13);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
     });
 }

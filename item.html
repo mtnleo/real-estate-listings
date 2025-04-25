@@ -4,43 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Property</title>
-    <script src="https://cdn.tailwindcss.com"></script>     
+    <!-- STYLE CSS & FUNCS JS -->
     <link rel="stylesheet" href="styles.css">
     <script src="func.js"></script>
-    <!--LUCIDE ICONS-->
+    <!-- TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>     
+    <!-- LUCIDE ICONS -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <!--<script src="https://unpkg.com/lucide@latest"></script>-->
     <script>
-        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });   
     </script>
+
+    <!-- LEAFLET MAP -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
 </head>
 <body>
     <!-- Navbar -->
     <nav class="relative container mx-auto flex justify-between items-center p-4 m-2">
-        <img class="w-40" src="./img/hearthly-logo.png" alt="">
+        <a href="index.html">
+          <img class="w-40" src="./img/hearthly-logo.png" alt="">
+  
+        </a>
         <div class=" flex-row space-x-6 hidden md:flex">
           <a href="#" >Properties</a>
           <a href="#" >About Us</a>
           <a href="#" >Contact Us</a>
         </div>
       </nav>
-
       <!-- Listing -->
     <section id="listing">
-        <container class="p-4 bg-gray-300 flex flex-col space-y-3 rounded-3xl md:flex-row md:space-y-0 md:space-x-4">
+        <container class="p-4 flex flex-col space-y-3 rounded-3xl md:flex-row md:space-y-0 md:space-x-4">
             <!-- IMAGE -->
-            <div class="w-full rounded-2xl overflow-hidden md:w-1/2">
+            <div class="drop-shadow-2xl w-full rounded-2xl overflow-hidden md:w-1/2">
                 <img src="https://images.unsplash.com/photo-1743653537429-a94889a6fd47?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" id='item-thumbnail' alt="">
             </div>
 
             <!-- INFORMATION -->
             <div class="flex flex-col justify-center items-center space-y-2">
                 <!-- Title -->
-                <div class="p-4 bg-white flex w-full justify-center items-center rounded-2xl">
-                    <h2 class="text-2xl" id="item-title">Placeholder</h2>
+                <div class="drop-shadow-2xl p-4 bg-white flex w-full justify-center items-center rounded-2xl">
+                    <h2 class="font-bold text-2xl" id="item-title">Placeholder</h2>
                 </div>
                 <!-- Price & City & Year -->
-                <div class="rounded-2xl w-full flex flex-row justify-center items-center space-x-4">
+                <div class="drop-shadow-2xl rounded-2xl w-full flex flex-row justify-center items-center space-x-4">
                     <div class="p-2 rounded-2xl bg-white w-full flex justify-center items-center">
                         <p class="text-gray-700 text-2xl" id="item-price">$</p>
                     </div>
@@ -48,47 +62,54 @@
                         <div class="flex flex-row items-center justify-center space-x-2">
                             <div class="pin-icon-container">
                                 <i data-lucide="map-pin"></i>
-        
                             </div>
                             <p class="text-gray-700" id="item-city">City</p>
                             <p class="text-gray-700" id="item-state">State</p>
                         </div>
-                        <div>
+                        <div  class="flex flex-row items-center justify-center space-x-2">
                             <div class="calendar-icon-container">
                                 <i data-lucide="calendar"></i>
-        
                             </div>
                             <p class="text-gray-700" id="item-year">2020</p>
                         </div>
                     </div>
                 </div>
                 <!-- House Specs -->
-                <div class="p-4 bg-white rounded-2xl w-full flex flex-row space-x-2 items-center justify-evenly">
-                    <div class="text-gray-700" id="item-sqft">sqft</div>
-                    <div class="text-gray-700" id="item-bedrooms">2 bedrooms</div>
-                    <div class="text-gray-700" id="item-bathrooms"> 3 bathrooms</div>
+                <div class="drop-shadow-2xl p-4 bg-white rounded-2xl w-full flex flex-row space-x-2 items-center justify-around">
+                    <div class="flex flex-row space-x-1">
+                        <i data-lucide="ruler"></i>
+                        <div class="text-gray-700" id="item-sqft">sqft</div>
+                    </div>
+                    <div class="flex flex-row space-x-1 pr-6">
+                        <i data-lucide="bed"></i>
+                        <div class="text-gray-700" id="item-bedrooms">2 bedrooms</div>
+                    </div>
+                    <div class="flex flex-row space-x-1 pr-4">
+                        <i data-lucide="bath"></i>
+                        <div class="text-gray-700" id="item-bathrooms"> 3 bathrooms</div>
+                    </div>
                 </div>
                 <!-- Firm -->
-                <div class="p-2 bg-white rounded-2xl w-full grid grid-cols-5 grid-rows-2 gap-1">
+                <div class="drop-shadow-2xl p-2 bg-white rounded-2xl w-full grid grid-cols-5 grid-rows-2 gap-1">
                     <div class="row-span-2 col-start-1 col-start3">
-                        <img class="w-24 rounded-full" id="firm-thumbnail" src="" alt="">
+                        <img class="w-14 h-14 sm:w-20 sm:h-20 rounded-full object-cover" id="firm-thumbnail" src="" alt="">
                     </div>
-                    <div class="row-start-1 row-end-2 col-start-3 col-end-5 flex items-center justify-center">
-                        <p class="text-lg" id="firm-name">Seller Name</p>
+                    <div class="row-span-1 col-start-2 col-end-4 flex items-end justify-center">
+                        <p class="text-lg font-bold" id="firm-name">Seller Name</p>
                     </div>
-                    <div class="row-start-2 row-end-3 col-start-3 col-end-5 flex items-center justify-center space-x-1">
+                    <div class="row-start-2 row-end-3 col-start-2 col-end-4 flex items-start justify-center space-x-1 pr-2">
                         <div class="pin-icon-container">
                             <i data-lucide="map-pin"></i>
                         </div>
                         <p class="text-gray-700" id="firm-city">City</p>
                         <p class="text-gray-700" id="firm-state">State</p>
                     </div>
-                    <div class="row-start-4 row-end-5 col-span-2 flex justify-center items-center">
+                    <div class="col-start-5 col-end-6 row-span-2 flex justify-center items-center">
                         <p>i</p>
                     </div>
                 </div>
                 <!-- Description -->
-                <div class="p-3 bg-white rounded-2xl flex items-center justify-center overflow-hidden">
+                <div class="drop-shadow-2xl p-3 bg-white rounded-2xl flex items-center justify-center overflow-hidden">
                     <p id="item-description">Description</p>
                 </div>
 
@@ -96,8 +117,18 @@
         </container>
     </section>
 
-    <link rel="stylesheet" href="styles.css">
-    <script src="func.js"></script>
+    <section id="secondary-information">
+        <container class="p-12 h-full flex flex-col justify-center items-center space-y-6 md:flex-row md:space-y-0 md:space-x-4">
+            <div class="md:w-1/2">
+                <div class="drop-shadow-2xl p-3 bg-white rounded-2xl flex items-center justify-center overflow-hidden">
+                    <p id="item-description">Description</p>
+                </div>
+            </div>
+            <div class="drop-shadow-2xl rounded-2xl overflow-hidden md:w-1/2">
+                <div class="w-full" id="map"></div>
+            </div>
+        </container>
+    </section>
 
     
 </body>
