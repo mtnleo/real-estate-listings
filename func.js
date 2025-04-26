@@ -154,6 +154,22 @@ async function loadProperty() {
         console.log(firmObject)
         loadFirm(firmObject[0]);
     }
+
+    loadDescription();
+}
+
+function loadDescription() {
+    const descriptionElement = document.getElementById('item-description');
+    descriptionElement.addEventListener('click', () => {
+        if(descriptionElement.classList.contains('line-clamp-3')) {
+            descriptionElement.classList.add('line-clamp-none');
+            descriptionElement.classList.remove('line-clamp-3');
+        }
+        else {
+            descriptionElement.classList.add('line-clamp-3');
+            descriptionElement.classList.remove('line-clamp-none');
+        }
+    })
 }
 
 async function loadMap(city, state) {
@@ -181,15 +197,5 @@ if(window.location.href.includes('item')) {
     window.addEventListener("DOMContentLoaded", () => {
         // Load property info
         loadProperty();
-
-
-        /* Load map 
-        let map = L.map('map').setView([51.505, -0.09], 13);
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
-
-        */
     });
 }
