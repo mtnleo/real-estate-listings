@@ -27,7 +27,7 @@
 
     <!-- Hero Section -->
     <section id="hero">
-      <container class="mt-14 mb-16 mx-10 px-4 flex flex-col-reverse space-y-4 justify-center items-center md:flex-row md:space-x-4 md:space-y-0 p-4">
+      <div class="mt-14 mb-16 mx-10 px-4 flex flex-col-reverse space-y-4 justify-center items-center md:flex-row md:space-x-4 md:space-y-0 p-4">
         <div class="p-4 flex items-center justify-center flex-col space-y-8 px-14 md:w-1/2 md:justify-center md:items-start">
           <h1 class="text-4xl text-center font-bold md:text-5xl md:text-left">A Smarter Way to House Hunt.</h1>
           <p class="text-center md:text-left text-gray-600">Browse beautiful listings, explore neighborhoods, and make confident real estate decisions — all in one place.</p>
@@ -37,13 +37,13 @@
           <img class="w-full h-full overflow-hidden" src="./img/house-searching.svg" alt="">
         </div>
 
-      </container>
+      </div>
     </section>
 
     <!-- Listings -->
     <section id="listings">
-      <div class="flex justify-center items-center m-4">
-        <h2 class="text-4xl font-bold text-center md:text-5xl">Our Properties</h2>
+      <div class="flex justify-center items-center m-4 pb-4">
+        <h2 class="text-3xl font-bold text-center md:text-4xl">Our Properties</h2>
       </div>
       <div class="flex items-center justify-center p-3">
         <div class="grid max-w-[90%] xl:max-w-[80%] 2xl:max-w-[70%] grid-cols-1 gap-1 sm:gap-6 lg:grid-cols-2">
@@ -191,7 +191,7 @@
     
     <!-- Why Us? -->
     <section class="bg-gray-100" id="why-us">
-      <container class="mt-4 pt-8 pb-12 mx-8 flex flex-col space-y-6 justify-evenly items-center">
+      <div class=" mt-4 pt-8 pb-12 mx-8 flex flex-col space-y-6 justify-evenly items-center">
         <h2 class="text-4xl font-bold">Why Us?</h2>
         <p class="text-gray-800">We accompany you every step of the way.</p>
         <div class="flex flex-col items-center justify-between space-y-12 lg:flex-row lg:space-x-4 lg:space-y-0">
@@ -211,12 +211,12 @@
             <p class="text-gray-700 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi impedit est, porro animi commodi cum.</p>
           </div>
         </div>
-      </container>
+      </div>
     </section>
 
     <!-- CTA -->
     <section class="bg-[#1B1549]" id="cta">
-      <container class="p-12 mx-8 flex flex-col justify-center items-center space-y-4 md:flex-row md:space-x-4 md:space-y-0">
+      <div class="p-12 mx-8 flex flex-col justify-center items-center space-y-4 md:flex-row md:space-x-4 md:space-y-0">
         <div class="flex flex-col space-y-4 md:w-1/2">
           <h2 class="text-white text-4xl font-bold text-center md:text-left md:text-5xl">Start finding your dream home</h2>
           <p class="text-gray-200">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam voluptatibus vero, natus neque veritatis atque recusandae labore beatae odit vitae.</p>
@@ -224,16 +224,31 @@
         <div class="flex justify-center items-center md:w-1/2">
           <a class="rounded-full bg-emerald-500 px-4 py-2 font-medium text-white hover:bg-emerald-600 w-36 md:w-44 lg:w-48 lg:h-12 lg:align-middle text-center"  href="#"><button>Browse Homes</button></a>
         </div>
-      </container>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-      <container class="bg-gray-900 flex flex-col sm:flex-row">
-        <div class="flex flex-col md:w-1/3"></div>
-        <div class="flex flex-col md:w-1/3"></div>
-        <div class="flex flex-col md:w-1/3"></div>
-      </container>
+      <div class="p-6 bg-gray-900 flex flex-col-reverse space-y-6 md:flex-row md:space-y-0 md:p-12">
+        <div class="pt-6 md:pt-0 flex flex-col justify-center items-center md:w-1/3">
+          <img class="w-40" src="./img/hearthly-logo-white.png" alt="">
+        </div>
+        <div class="flex flex-col justify-start items-center space-y-2 md:w-1/3">
+          <a class="text-white" href="index.html">Home</a>
+          <a class="text-white" href="#" >Properties</a>
+          <a class="text-white" href="#" >About Us</a>
+          <a class="text-white" href="#" >Contact Us</a>
+        </div>
+        <div class="flex flex-col items-center justify-center md:justify-around  md:w-1/3">
+          <form>
+            <div class="flex flex-row space-x-4">
+              <input class="flex-1 px-4 rounded-full focus:outline-none" type="text" placeholder="Get important updates">
+              <button class="px-6 py-2 text-white rounded-full  bg-emerald-500 hover:bg-emerald-600 focus:outline-none">Go</button>
+            </div>
+          </form>
+          <div class="hidden text-gray-100 md:block">Copyright &copy; 2025, All Rights Reserved</div>
+        </div>
+      </div>
     </footer>
 
 </body>

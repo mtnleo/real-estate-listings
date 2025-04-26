@@ -163,7 +163,7 @@ async function loadMap(city, state) {
     const [results] = await geoSearchProvider.search({ query: `${city}, ${state}` });
     console.log(results.raw.lat, results.raw.lon);
 
-    let map = L.map('map').setView([results.raw.lat, results.raw.lon], 10);
+    let map = L.map('map').setView([results.raw.lat, results.raw.lon], 11);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'

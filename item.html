@@ -49,8 +49,8 @@
         </div>
       </nav>
       <!-- Listing -->
-    <section id="listing">
-        <container class="p-4 flex flex-col space-y-3 rounded-3xl md:flex-row md:space-y-0 md:space-x-4">
+    <section class="flex justify-center" id="listing">
+        <div class="container p-4 flex flex-col justify-center space-y-3 rounded-3xl md:flex-row md:space-y-0 md:space-x-4">
             <!-- IMAGE -->
             <div class="drop-shadow-2xl w-full rounded-2xl overflow-hidden md:w-1/2">
                 <img src="https://images.unsplash.com/photo-1743653537429-a94889a6fd47?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" id='item-thumbnail' alt="">
@@ -63,9 +63,9 @@
                     <h2 class="font-bold text-2xl" id="item-title">Placeholder</h2>
                 </div>
                 <!-- Price & City & Year -->
-                <div class="drop-shadow-2xl rounded-2xl w-full flex flex-row justify-center items-center space-x-4">
+                <div class="drop-shadow-2xl rounded-2xl w-full flex flex-col justify-center items-center space-y-2 sm:flex-row sm:space-x-4">
                     <div class="p-2 rounded-2xl bg-white w-full flex justify-center items-center">
-                        <p class="text-gray-700 text-2xl" id="item-price">$</p>
+                        <p class="text-gray-900 font-bold text-2xl" id="item-price">$</p>
                     </div>
                     <div class="p-2 rounded-2xl bg-white w-full h-full flex flex-col justify-evenly align-center space-y-2">
                         <div class="flex flex-row items-center justify-center space-x-2">
@@ -99,22 +99,25 @@
                     </div>
                 </div>
                 <!-- Firm -->
-                <div class="drop-shadow-2xl p-2 bg-white rounded-2xl w-full grid grid-cols-5 grid-rows-2 gap-1">
-                    <div class="row-span-2 col-start-1 col-start3">
+                <div class="drop-shadow-2xl p-2 bg-white rounded-2xl w-full flex flex-row items-center justify-around space-x-2">
+                    <div class="">
                         <img class="w-14 h-14 sm:w-20 sm:h-20 rounded-full object-cover" id="firm-thumbnail" src="" alt="">
                     </div>
-                    <div class="row-span-1 col-start-2 col-end-4 flex items-end justify-center">
-                        <p class="text-lg font-bold" id="firm-name">Seller Name</p>
-                    </div>
-                    <div class="row-start-2 row-end-3 col-start-2 col-end-4 flex items-start justify-center space-x-1 pr-2">
-                        <div class="pin-icon-container">
-                            <i data-lucide="map-pin"></i>
+                    <div class="flex flex-col items-center justify-center">
+                        <div class="flex items-end justify-center">
+                            <p class="text-lg font-bold" id="firm-name">Seller Name</p>
                         </div>
-                        <p class="text-gray-700" id="firm-city">City</p>
-                        <p class="text-gray-700" id="firm-state">State</p>
+                        <div class="flex items-start justify-center space-x-1 pr-2">
+                            <p class="text-gray-700" id="firm-city">City</p>
+                            <p class="text-gray-700" id="firm-state">State</p>
+                        </div>
+
                     </div>
-                    <div class="col-start-5 col-end-6 row-span-2 flex justify-center items-center">
-                        <p>i</p>
+                    <div class="flex justify-center items-center">
+                        <a src="#" class="p-3 bg-gray-200 rounded-full flex justify-center items-center">
+                            <i data-lucide="message-circle-more" class="w-8 h-8"></i>
+
+                        </a>
                     </div>
                 </div>
                 <!-- Description -->
@@ -123,20 +126,20 @@
                 </div>
 
             </div>
-        </container>
+        </div>
     </section>
 
-    <section id="secondary-information">
-        <container class="p-12 h-full flex flex-col justify-center items-center space-y-6 md:flex-row md:space-y-0 md:space-x-4">
+    <section class="flex justify-center" id="secondary-information">
+        <div class="container p-6 sm:p-12 h-full flex flex-col justify-center items-center space-y-6 md:flex-row md:space-y-0 md:space-x-4">
             <div class="md:w-1/2">
                 <div class="drop-shadow-2xl p-3 bg-white rounded-2xl flex items-center justify-center overflow-hidden">
                     <p id="item-description">Description</p>
                 </div>
             </div>
-            <div class="drop-shadow-2xl rounded-2xl overflow-hidden md:w-1/2">
+            <div class="drop-shadow-2xl rounded-2xl overflow-hidden w-full md:w-1/2">
                 <div class="w-full" id="map"></div>
             </div>
-        </container>
+        </div>
     </section>
 
     
