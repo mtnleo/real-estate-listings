@@ -1,3 +1,10 @@
+/* ########################################### */
+/* ########################################### */
+/* ######### LOAD PROPERTIES IN HTML ######### */
+/* ########################################### */
+/* ########################################### */
+
+/* *************** LOAD PROPERTIES IN INDEX *************** */
 
 function changePropertyImgSrc(imgNumber, newUrl) {
     document.getElementById("p_img_" + imgNumber).src = newUrl;
@@ -35,7 +42,7 @@ function changePropertyButton(buttonNumber, newId) {
     button.href = `item.html?id=${newId}`;
 }
 
-// Item's page
+/* *************** LOAD PROPERTY IN ITEM *************** */
 
 function loadPropertyInfo(propertyObject) {
     document.getElementById('item-thumbnail').src = propertyObject.thumbnail;
@@ -101,6 +108,8 @@ async function getClickedProperty(id) {
     }
 }
 
+/* *************** LOAD FEATURED IN INDEX *************** */
+
 
 async function loadFeaturedProperties() {
     const url = 'http://127.0.0.1:8080/featured-properties';
@@ -124,6 +133,8 @@ async function loadFeaturedProperties() {
         }
     }
 }
+
+/* *************** LOAD PROPERTY IN ITEM *************** */
 
 async function loadProperty() {
     const params = new URLSearchParams(window.location.search);
@@ -187,7 +198,21 @@ async function loadMap(city, state) {
     }
 }
 
-//// CHECK WINDOW AND CALL FUNCTION
+/* *************** LOAD HTML DYNAMICALLY *************** */
+
+async function loadListingHtml() {
+    
+}
+
+async function loadAllListings() {
+
+}
+
+/* ################################################# */
+/* ################################################# */
+/* ######### CHECK WINDOW AND RUN FUNCTION ######### */
+/* ################################################# */
+/* ################################################# */
 
 if(window.location.href.includes('index')) {
     loadFeaturedProperties();
