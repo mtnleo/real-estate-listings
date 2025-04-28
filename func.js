@@ -201,7 +201,46 @@ async function loadMap(city, state) {
 /* *************** LOAD HTML DYNAMICALLY *************** */
 
 async function loadListingHtml() {
-    
+    /////////////// CREATING NODES ///////////////
+
+    // MAIN DIV
+    const mainDiv = document.createElement("div");
+
+        // IMAGE
+        const listingImg = document.createElement("img");
+
+        // BOTTOM DIV
+        const listingBottomDiv = document.createElement("div");
+
+            // PRICE & YEAR
+            const listingPriceYearDiv = document.createElement("div");
+                const listingPriceTitle = document.createElement("h1");
+                const listingYear = document.createElement("p");
+
+            // TITLE
+            const listingTitle = document.createElement("h1");
+
+            // SPECS & LOCATION
+            const listingSpecsLocationDiv = document.createElement("div");
+                // Specs
+                const listingSpecsDiv = document.createElement("div");
+                    const specSqft = document.createElement("p");
+                    const specBds = document.createElement("p");
+                    const specBa = document.createElement("p");
+            
+                // Location
+                const listingLocationDiv =  document.createElement("div");
+                    const locationIconDiv = document.createElement("div");
+                        const locationIconI = document.createElement("i");
+                    const locationCity = document.createElement("p");
+                    const locationState = document.createElement("p");
+
+    /////////////// ASSIGNING CONNECTION ///////////////
+
+    /////////////// ASSIGNING CLASSES ///////////////
+
+    /////////////// ASSIGNING DATA ///////////////
+
 }
 
 async function loadAllListings() {
