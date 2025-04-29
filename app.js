@@ -22,7 +22,6 @@ app.use(express.json())
 app.get("/properties", async (req, res) => {
     const properties = await RealEstateModel.getAllProperties();
     res.send(properties);
-
 });
 
 app.get("/properties/:id", async (req, res) => {

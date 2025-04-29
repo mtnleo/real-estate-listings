@@ -205,6 +205,7 @@ async function loadListingHtml(listingObject) {
 
     // MAIN DIV
     const mainDiv = document.createElement("div");
+    const mainA = document.createElement("a");
 
         // IMAGE
         const listingImg = document.createElement("img");
@@ -239,8 +240,9 @@ async function loadListingHtml(listingObject) {
 
     document.getElementById("listings-container").appendChild(mainDiv);
 
-    mainDiv.appendChild(listingImg);
-    mainDiv.appendChild(listingBottomDiv);
+    mainDiv.appendChild(mainA);
+    mainA.appendChild(listingImg);
+    mainA.appendChild(listingBottomDiv);
 
         listingBottomDiv.appendChild(listingPriceYearDiv);
         listingBottomDiv.appendChild(listingTitle);
@@ -267,9 +269,13 @@ async function loadListingHtml(listingObject) {
     mainDiv.classList.add("max-w-sm");
     mainDiv.classList.add("rounded-2xl");
     mainDiv.classList.add("overflow-hidden");
-    mainDiv.classList.add("shadow-lg");
+    mainDiv.classList.add("drop-shadow-lg");
+    mainDiv.classList.add("drop-shadow-gray-50/20");
 
-        // listingImg.classList.add("")
+    mainA.href = `item.html?id=${listingObject.id}`;
+
+    listingImg.classList.add("object-cover")
+    listingImg.classList.add("aspect-video")
 
     listingBottomDiv.classList.add("p-4");
 
@@ -335,7 +341,6 @@ async function loadListingHtml(listingObject) {
     
     listingTitle.appendChild(document.createTextNode(listingObject.title));
     
-    console.log(listingObject.sqft)
     specSqft.appendChild(document.createTextNode(listingObject.sqft + ' sqft |'));
     specBds.appendChild(document.createTextNode(listingObject.bedrooms + ' bds |'));
     specBa.appendChild(document.createTextNode(listingObject.bathrooms + ' ba'));
@@ -347,8 +352,8 @@ async function loadListingHtml(listingObject) {
 }
 
 async function loadAllListings() {
-
-    let response = await fetch(`http://127.0.0.1:8080/properties/`);
+    const url = 'http://127.0.0.1:8080/properties/'
+    let response = await fetch(url);
     if(!response.ok) {
         console.log("There was a problem loading the property object.");
     }

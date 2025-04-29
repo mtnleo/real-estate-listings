@@ -42,7 +42,7 @@ export class RealEstateModel {
             `SELECT BIN_TO_UUID(id) AS id, title, price, city, state, year, description, thumbnail 
              FROM property 
              ORDER BY price DESC
-             LIMIT 4 `
+             LIMIT 4`
         );
         
         return result[0];
