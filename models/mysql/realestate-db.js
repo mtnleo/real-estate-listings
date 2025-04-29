@@ -31,7 +31,7 @@ export class RealEstateModel {
 
     static async getAllProperties () {
         const result = await pool.query(
-            'SELECT BIN_TO_UUID(id) AS id, title, price, city, state, year, description, thumbnail FROM property ORDER BY price DESC'
+            'SELECT BIN_TO_UUID(id) AS id, title, price, city, state, year, description, thumbnail, sqft, bedrooms, bathrooms FROM property ORDER BY price DESC'
         );
 
         return result[0]; // [0] because I just want the rows

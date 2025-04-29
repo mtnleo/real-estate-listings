@@ -200,7 +200,7 @@ async function loadMap(city, state) {
 
 /* *************** LOAD HTML DYNAMICALLY *************** */
 
-async function loadListingHtml() {
+async function loadListingHtml(listingObject) {
     /////////////// CREATING NODES ///////////////
 
     // MAIN DIV
@@ -237,13 +237,128 @@ async function loadListingHtml() {
 
     /////////////// ASSIGNING CONNECTION ///////////////
 
+    document.getElementById("listings-container").appendChild(mainDiv);
+
+    mainDiv.appendChild(listingImg);
+    mainDiv.appendChild(listingBottomDiv);
+
+        listingBottomDiv.appendChild(listingPriceYearDiv);
+        listingBottomDiv.appendChild(listingTitle);
+        listingBottomDiv.appendChild(listingSpecsLocationDiv);
+
+            listingPriceYearDiv.appendChild(listingPriceTitle);
+            listingPriceYearDiv.appendChild(listingYear);
+
+            listingSpecsLocationDiv.appendChild(listingSpecsDiv);
+            listingSpecsLocationDiv.appendChild(listingLocationDiv);
+
+                listingSpecsDiv.appendChild(specSqft);
+                listingSpecsDiv.appendChild(specBds);
+                listingSpecsDiv.appendChild(specBa);
+
+                listingLocationDiv.appendChild(locationIconDiv);
+                    locationIconDiv.appendChild(locationIconI);
+                listingLocationDiv.appendChild(locationCity);
+                listingLocationDiv.appendChild(locationState);
+
     /////////////// ASSIGNING CLASSES ///////////////
 
+    mainDiv.classList.add("bg-white");
+    mainDiv.classList.add("max-w-sm");
+    mainDiv.classList.add("rounded-2xl");
+    mainDiv.classList.add("overflow-hidden");
+    mainDiv.classList.add("shadow-lg");
+
+        // listingImg.classList.add("")
+
+    listingBottomDiv.classList.add("p-4");
+
+    listingPriceYearDiv.classList.add("flex");
+    listingPriceYearDiv.classList.add("flex-row");
+    listingPriceYearDiv.classList.add("space-y-0");
+    listingPriceYearDiv.classList.add("items-center");
+    listingPriceYearDiv.classList.add("justify-between");
+
+    listingTitle.classList.add("text-xl");
+    listingTitle.classList.add("font-medium");
+    listingTitle.classList.add("text-gray-800");
+
+    listingSpecsLocationDiv.classList.add("flex");
+    listingSpecsLocationDiv.classList.add("flex-col");
+    listingSpecsLocationDiv.classList.add("space-y-2");
+    listingSpecsLocationDiv.classList.add("lg:space-y-0");
+    listingSpecsLocationDiv.classList.add("lg:flex-row");
+    listingSpecsLocationDiv.classList.add("lg:justify-between");
+    listingSpecsLocationDiv.classList.add("lg:items-center");
+    listingSpecsLocationDiv.classList.add("pt-2");
+
+    listingPriceTitle.classList.add("text-2xl");
+    listingPriceTitle.classList.add("font-bold");
+    listingPriceTitle.classList.add("pb-1");
+
+    listingYear.classList.add("bg-gray-200");
+    listingYear.classList.add("rounded-full");
+    listingYear.classList.add("p-1");
+    listingYear.classList.add("px-2");
+    listingYear.classList.add("text-gray-600");
+
+    listingSpecsDiv.classList.add("flex");
+    listingSpecsDiv.classList.add("items-center");
+    listingSpecsDiv.classList.add("justify-start");
+    listingSpecsDiv.classList.add("space-x-2");
+    listingSpecsDiv.classList.add("pt-2");
+
+    listingLocationDiv.classList.add("flex");
+    listingLocationDiv.classList.add("items-center");
+    listingLocationDiv.classList.add("justify-start");
+    listingLocationDiv.classList.add("space-x-1");
+    listingLocationDiv.classList.add("pt-2");
+
+    specSqft.classList.add("text-gray-600");
+    specBds.classList.add("text-gray-600");
+    specBa.classList.add("text-gray-600");
+
+    locationIconDiv.classList.add("pin-icon-container");
+    locationIconI.setAttribute('data-lucide', 'map-pin')
+
+    locationCity.classList.add("text-gray-600");
+    locationState.classList.add("text-gray-600");
+
     /////////////// ASSIGNING DATA ///////////////
+
+    listingImg.src = listingObject.thumbnail;
+
+    
+    listingPriceTitle.appendChild(document.createTextNode(formatPrice(listingObject.price)));
+    
+    listingYear.appendChild(document.createTextNode(listingObject.year));
+    
+    listingTitle.appendChild(document.createTextNode(listingObject.title));
+    
+    console.log(listingObject.sqft)
+    specSqft.appendChild(document.createTextNode(listingObject.sqft + ' sqft |'));
+    specBds.appendChild(document.createTextNode(listingObject.bedrooms + ' bds |'));
+    specBa.appendChild(document.createTextNode(listingObject.bathrooms + ' ba'));
+    
+    locationCity.appendChild(document.createTextNode(listingObject.city + ','));
+    locationState.appendChild(document.createTextNode(listingObject.state));
+
 
 }
 
 async function loadAllListings() {
+
+    let response = await fetch(`http://127.0.0.1:8080/properties/`);
+    if(!response.ok) {
+        console.log("There was a problem loading the property object.");
+    }
+    else {
+        let propertyObject = await response.json();
+
+        propertyObject.forEach(element => {
+            loadListingHtml(element);
+        });
+    }
 
 }
 
@@ -255,6 +370,10 @@ async function loadAllListings() {
 
 if(window.location.href.includes('index')) {
     loadFeaturedProperties();
+}
+
+if(window.location.href.includes('listing')) {
+    loadAllListings();
 }
 
 if(window.location.href.includes('item')) {
