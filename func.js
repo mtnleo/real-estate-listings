@@ -276,6 +276,11 @@ async function loadListingHtml(listingObject) {
 
     listingImg.classList.add("object-cover")
     listingImg.classList.add("aspect-video")
+    listingImg.classList.add("transition")
+    listingImg.classList.add("ease-in-out")
+    listingImg.classList.add("duration:200")
+    listingImg.classList.add("hover:scale-105")
+    listingImg.classList.add("overflow-hidden")
 
     listingBottomDiv.classList.add("p-4");
 
@@ -387,3 +392,14 @@ if(window.location.href.includes('item')) {
         loadProperty();
     });
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+    const hamburgerBtn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+    hamburgerBtn.addEventListener("click", () => {
+        hamburgerBtn.classList.toggle('open');
+        menu.classList.toggle('hidden');
+    })
+
+
+})
