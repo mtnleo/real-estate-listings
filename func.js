@@ -403,3 +403,20 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 })
+
+window.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('subscribe-form').addEventListener('submit', async (event) => {
+        event.preventDefault(); 
+    
+        const email = document.getElementById('email').value;
+    
+        const response = await fetch('http://127.0.0.1:8080/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+    
+        const data = await response.text();
+        console.log("Front response: ", data);
+      });
+});

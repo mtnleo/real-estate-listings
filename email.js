@@ -1,36 +1,44 @@
 /* EMAIL FUNCTIONALITY */
 
-const nodemailer = import('nodemailer');
+import nodemailer from 'nodemailer';
 let toEmail = ''; // Add from form
+console.log(process.env.BREVO_SMTP_KEY);
+const emailBody = `
+<div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f7f7f7; color: #333;">
+  <h2 style="color: #3e4e41;">Welcome to Hearthly! 🪴</h2>
+  <p>Hey there!</p>
+  <p>Thanks for signing up. You're now part of a cozy little space where we’re building something warm and meaningful.</p>
+  <p>We’ll keep you posted with updates. Until then, sit back and relax — you’re on the list.</p>
+  <p style="margin-top: 30px;">– The Hearthly Team</p>
+</div>
+`
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp-relay.brevo.com',
+    port: 587,
     auth: {
-      user: 'youremail@gmail.com',
-      pass: 'yourpassword'
-    }
+      user: '8c149b001@smtp-brevo.com', 
+      pass: process.env.BREVO_SMTP_KEY,
+    },
 });
   
 const mailOptions = {
-    from: EMAIL, // Add from .env
+    from: 'hello.hearthly@gmail.com', // Add from .env
     to: toEmail,
     subject: `🎉 Welcome to Hearthly – You're on the list!`,
-    text: `Hi,
-
-Thanks for signing up! You're officially part of the Hearthly community.
-
-We'll keep you in the loop with exclusive updates, fresh listings, and helpful tips to make your property search easier and more exciting.
-
-If you ever have questions or want to get in touch, we're just an email away.
-
-Talk soon,
-The Hearthly Team 🏡`
+    html: emailBody
 };
   
-transporter.sendMail(mailOptions, function(error, info){
+
+
+export async function sendEmail(newEmail) {
+  mailOptions.to = newEmail;
+
+  transporter.sendMail(mailOptions, function(error, info){
     if (error) {
       console.log(error);
     } else {
       console.log('Email sent: ' + info.response);
     }
-});
+  }); 
+}

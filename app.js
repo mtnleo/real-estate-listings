@@ -6,6 +6,9 @@ import { validateFirm } from './schemas/firms.js'
 
 import { RealEstateModel } from './models/mysql/realestate-db.js';
 
+import { sendEmail } from './email.js';
+
+
 const app = express();
 
 // ------------------ Middleware ------------------ \\
@@ -61,6 +64,25 @@ app.get('/firms-p/:id', async (req, res) => {
 
 
 // ------------------  POST  ------------------  ||
+
+// Emails
+
+app.post('/subscribe', async (req, res) => {
+    const userEmail = req.body.email;
+    console.log("Email: ", userEmail);
+
+    if (!userEmail) {
+        return res.status(400).send('Email is required.');
+    }
+    
+    try {
+        await sendEmail(userEmail);
+        res.send('Thanks for subscribing!'); // Handle pop-up in Front
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error sending email.');
+    }
+})
 
 // Properties 
 
