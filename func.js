@@ -406,7 +406,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 window.addEventListener("DOMContentLoaded", () => {
     document.getElementById('subscribe-form').addEventListener('submit', async (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
     
         const email = document.getElementById('email').value;
     
