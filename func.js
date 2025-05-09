@@ -372,6 +372,20 @@ async function loadAllListings() {
 
 }
 
+function showToast(toastId) {
+    const toast = document.getElementById(toastId);
+  
+    // Show: make visible and animate in
+    toast.classList.remove("opacity-0", "translate-y-4", "pointer-events-none");
+    toast.classList.add("opacity-100", "translate-y-0");
+  
+    // Hide after 3 seconds
+    setTimeout(() => {
+      toast.classList.remove("opacity-100", "translate-y-0");
+      toast.classList.add("opacity-0", "translate-y-4", "pointer-events-none");
+    }, 3000);
+  }
+
 /* ################################################# */
 /* ################################################# */
 /* ######### CHECK WINDOW AND RUN FUNCTION ######### */
@@ -416,13 +430,11 @@ window.addEventListener("DOMContentLoaded", () => {
           body: JSON.stringify({ email }),
         });
     
-        if(response.ok) {
-            const toast = document.getElementById("subscription-toast");
-            toast.classList.toggle("hidden");
-            setTimeout(()=> {
-                toast.classList.toggle("hidden");
-            }, 3000)
-        }
+        if (response.ok) {
+            showToast("subscription-toast");
+          } else {
+            showToast("error-toast");
+          }
 
         const data = await response.text();
         console.log("Front response: ", data);
