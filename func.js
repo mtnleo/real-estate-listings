@@ -50,11 +50,11 @@ function loadPropertyInfo(propertyObject) {
     document.getElementById('item-price').textContent = formatPrice(propertyObject.price);
     document.getElementById('item-city').textContent = propertyObject.city + ',';
     document.getElementById('item-state').textContent = propertyObject.state;
-    document.getElementById('item-year').textContent = propertyObject.year;
+    document.getElementById('item-year').textContent = 'Built in ' + propertyObject.year;
     document.getElementById('item-description').textContent = propertyObject.description;
     document.getElementById('item-sqft').textContent = propertyObject.sqft + ' sqft.';
-    document.getElementById('item-bedrooms').textContent = propertyObject.bedrooms;
-    document.getElementById('item-bathrooms').textContent = propertyObject.bathrooms;
+    document.getElementById('item-bedrooms').textContent = propertyObject.bedrooms + ' bedrooms';
+    document.getElementById('item-bathrooms').textContent = propertyObject.bathrooms + ' bathrooms';
     
 }
 
