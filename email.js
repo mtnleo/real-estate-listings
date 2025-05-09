@@ -23,7 +23,7 @@ const transporter = nodemailer.createTransport({
 });
   
 const mailOptions = {
-    from: 'hello.hearthly@gmail.com', // Add from .env
+    from: '"Hearthly Team" hello.hearthly@gmail.com', // Add from .env
     to: toEmail,
     subject: `🎉 Welcome to Hearthly – You're on the list!`,
     html: emailBody

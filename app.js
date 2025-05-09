@@ -3,6 +3,7 @@ import cors from 'cors';
 import crypto from 'node:crypto';
 import { validatePartialProperty, validateProperty } from './schemas/properties.js'
 import { validateFirm } from './schemas/firms.js'
+import { validateEmail } from './schemas/subscriptions.js'
 
 import { RealEstateModel } from './models/mysql/realestate-db.js';
 
@@ -74,13 +75,21 @@ app.post('/subscribe', async (req, res) => {
     if (!userEmail) {
         return res.status(400).send('Email is required.');
     }
+
+    const result = await validateEmail({email: userEmail});
     
-    try {
-        await sendEmail(userEmail);
-        res.send('Thanks for subscribing!'); // Handle pop-up in Front
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Error sending email.');
+    if (result.error) {
+        return res.status(400).json( {error: JSON.parse(result.error.message)})
+    }
+    else {
+        try {
+            await sendEmail(userEmail);
+            res.send('Thanks for subscribing!'); // Handle pop-up in Front
+        } catch (err) {
+            console.error(err);
+            res.status(500).send('Error sending email.');
+        }
+
     }
 })
 

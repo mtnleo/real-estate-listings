@@ -416,6 +416,8 @@ window.addEventListener("DOMContentLoaded", () => {
           body: JSON.stringify({ email }),
         });
     
+        console.log("Response Ok?: " + response.ok);
+
         const data = await response.text();
         console.log("Front response: ", data);
       });
