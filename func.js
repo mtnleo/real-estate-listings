@@ -416,7 +416,13 @@ window.addEventListener("DOMContentLoaded", () => {
           body: JSON.stringify({ email }),
         });
     
-        console.log("Response Ok?: " + response.ok);
+        if(response.ok) {
+            const toast = document.getElementById("subscription-toast");
+            toast.classList.toggle("hidden");
+            setTimeout(()=> {
+                toast.classList.toggle("hidden");
+            }, 3000)
+        }
 
         const data = await response.text();
         console.log("Front response: ", data);
