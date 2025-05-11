@@ -6,6 +6,9 @@ It can be used as a template for a Real Estate website where people can find the
 
 ## 👨🏻‍💻 What's the tech stack?
 Hearthly relies on:
+
+[![Tech Stack](https://skillicons.dev/icons?i=js,html,css,tailwind,nodejs,expressjs,mysql)](https://skillicons.dev)
+
 ### Front-end
 - HTML5
 - CSS
