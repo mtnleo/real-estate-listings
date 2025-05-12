@@ -81,3 +81,37 @@ body {
 .open .hamburger-bottom {
     transform: rotate(-45deg) translateY(6px) translate(-6px);
 }
+
+#connect {
+    background-image: url(./img/connect-blobs.svg);
+
+    background-position-x: 110%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+#explore {
+    background-image: url('./img/explore.svg');
+    background-position-y: center;
+    background-position-x: 10%;
+    background-size: 40%;
+    background-repeat: no-repeat;
+}
+
+#compare {
+    background-image: url('./img/compare.svg') ;
+    
+    background-position-y: center;
+    background-position-x: 10%;
+    background-size: 40%;
+    background-repeat: no-repeat;
+}
+
+
+#buy {
+    background-image: url('./img/buy.svg');
+    background-position-y: 22%;
+    background-position-x: 60%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" width="199.57" height="197.41" viewBox="0 0 199.57 197.41">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #9ed37b;
+      }
+
+      .cls-2 {
+        fill: #7bd3ab;
+      }
+
+      .cls-3 {
+        fill: #7bc47d;
+      }
+
+      .cls-4 {
+        fill: #9ee6ab;
+      }
+
+      .cls-5 {
+        fill: #7bc473;
+      }
+
+      .cls-6 {
+        fill: #9ed397;
+      }
+
+      .cls-7 {
+        fill: none;
+        stroke: #999;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-8 {
+        fill: #9ed3ab;
+      }
+    </style>
+  </defs>
+  <line class="cls-7" x1="39.17" y1="22.91" x2="99.17" y2="12.91"/>
+  <line class="cls-7" x1="31.17" y1="44.91" x2="110.17" y2="78.91"/>
+  <line class="cls-7" x1="18.17" y1="47.91" x2="15.17" y2="148.91"/>
+  <line class="cls-7" x1="111.17" y1=".91" x2="110.17" y2="78.91"/>
+  <line class="cls-7" x1="172.17" y1="49.91" x2="172.17" y2="154.91"/>
+  <line class="cls-7" x1="111.17" y1="15.91" x2="170.17" y2="46.91"/>
+  <line class="cls-7" x1="110.17" y1="78.91" x2="172.17" y2="168.91"/>
+  <line class="cls-7" x1="18.17" y1="36.91" x2="93.17" y2="183.91"/>
+  <line class="cls-7" x1="110.17" y1="78.91" x2="15.17" y2="148.91"/>
+  <line class="cls-7" x1="99.17" y1="179.91" x2="175.17" y2="175.91"/>
+  <circle class="cls-8" cx="172.4" cy="47.26" r="18.26"/>
+  <ellipse class="cls-4" cx="110.4" cy="13.21" rx="13.26" ry="13.21"/>
+  <path class="cls-3" d="M41.67,32.46c0,11.57-9.33,20.95-20.83,20.95S0,44.03,0,32.46,9.33,11.51,20.83,11.51c7.86,0,14.98,4.8,18.42,11.15.67,1.23,2.42,4.92,2.42,9.81Z"/>
+  <circle class="cls-6" cx="176.71" cy="174.55" r="22.86"/>
+  <circle class="cls-2" cx="15.34" cy="148.69" r="13.73"/>
+  <ellipse class="cls-1" cx="110.14" cy="78.69" rx="15.53" ry="15.73"/>
+  <ellipse class="cls-5" cx="90.14" cy="181.2" rx="15.53" ry="15.25"/>
+</svg>
