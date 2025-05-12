@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>     
+    <link rel="stylesheet" href="styles.css">
+    <script src="func.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="relative container mx-auto  p-4 m-2">
+      <div class="flex justify-between items-center">
+        <a href="index.html">
+          <img class="w-40" src="./img/hearthly-logo.png" alt="">
+        </a>
+        <div class=" flex-row space-x-6 hidden md:flex">
+          <a href="index.html" >Home</a>
+          <a href="listings.html" >Properties</a>
+          <a href="#" >About Us</a>
+          <a href="https://github.com/mtnleo/real-estate-listings" >GitHub</a>
+        </div>
+        <!-- Hamburger Icon -->
+        <button id="menu-btn" class="block hamburger md:hidden focus:outline-none">
+          <span class="hamburger-top"></span>
+          <span class="hamburger-middle"></span>
+          <span class="hamburger-bottom"></span>
+        </button>
+
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="md:hidden">
+        <div id="menu" class="absolute z-10 flex flex-col items-center self-end hidden py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md">
+          <a href="index.html" >Home</a>
+          <a href="listings.html" >Properties</a>
+          <a href="#" >About Us</a>
+          <a href="https://github.com/mtnleo/real-estate-listings" >GitHub</a>
+        </div>  
+      </div>
+    </nav>
+
+    <!-- Main Section -->
+    <section id="about-us">
+        <div class="container my-8 p-8 mx-8 flex flex-col justify-center items-center space-y-2 md:flex-row md:space-y-0 md:space-x-2">
+            <div class="flex justify-center md:w-1/2">
+                <img class="max-h-96" src="./img/about-us.svg" alt="Person with giant phone with a house on it.">
+            </div>
+            <div class="p-4 flex flex-col space-y-6 justify-end items-center md:w-1/2">
+                <h1 class="text-start text-4xl font-bold">What is <span class="font-bold text-[#251e59]">Hearthly</span>?</h1>
+                <p class="text-gray-800 text-start">
+                    <span class="text-lg font-bold text-[#1B1549]">Hearthly</span> is your trusted partner in the journey to find your dream home. We combine smart tools with a human touch to make home searching easier, more personalized, and stress-free. Whether you're buying or just exploring, we're here to guide you every step of the way. Our platform is designed to help you discover the right place that truly feels like home — with clarity, confidence, and support.
+                </p>
+                <p class="text-gray-800 text-start">
+                    We believe that finding a home should feel exciting, not overwhelming. That’s why Hearthly focuses on making the experience as seamless and human-centered as possible. From curated listings to simple subscriptions, we aim to keep you connected, informed, and inspired — so your next move is one you’ll feel great about.
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Bento -->
+
+
+
+
+    <!-- Footer -->
+    <footer >
+      <div class="p-6 bg-gray-900 flex flex-col-reverse space-y-6 md:flex-row md:space-y-0 md:p-12">
+        <div class="pt-6 md:pt-0 flex flex-col justify-center items-center md:w-1/3">
+          <img class="w-40" src="./img/hearthly-logo-white.png" alt="">
+        </div>
+        <div class="flex flex-col justify-start items-center space-y-2 md:w-1/3">
+          <a class="text-white" href="index.html">Home</a>
+          <a class="text-white" href="listings.html" >Properties</a>
+          <a class="text-white" href="#" >About Us</a>
+          <a class="text-white" href="https://github.com/mtnleo/real-estate-listings" >GitHub</a>
+        </div>
+        <div class="flex flex-col items-center justify-center md:justify-around  md:w-1/3">
+          <form id="subscribe-form">
+            <div class="flex flex-row space-x-4">
+              <input id="email" class="flex-1 px-4 rounded-full focus:outline-none" type="text" placeholder="Get important updates">
+              <input type="submit" value="Go" class="px-6 py-2 text-white rounded-full  bg-emerald-500 hover:bg-emerald-600 focus:outline-none">
+            </div>
+          </form>
+          <div class="hidden text-gray-100 md:block">Copyright &copy; 2025, All Rights Reserved</div>
+        </div>
+      </div>
+
+      <div class="toast bg-gray-700 w-[12rem] text-white font-bold fixed z-10 p-3 text-center bottom-4 right-6 rounded-2xl opacity-0 translate-y-4 transition-all duration-300 pointer-events-none" id="subscription-toast">
+        You're subscribed!
+      </div>
+
+      <div class="toast bg-red-200 w-[16rem] text-gray-800 font-bold fixed z-10 p-3 text-center bottom-20 right-6 rounded-2xl opacity-0 translate-y-4 transition-all duration-300 pointer-events-none" id="error-toast">
+        An error occured, try again.
+      </div>
+
+    </footer>
+</body>
+</html>
