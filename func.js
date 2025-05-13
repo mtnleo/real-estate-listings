@@ -63,6 +63,9 @@ function loadFirm(firmObject) {
     document.getElementById('firm-name').textContent = firmObject.name;
     document.getElementById('firm-city').textContent = firmObject.city + ', ';
     document.getElementById('firm-state').textContent = firmObject.state;
+    document.getElementById('firm-email').textContent = firmObject.email;
+    document.getElementById('firm-web').textContent = firmObject.website;
+
 }
 
 
@@ -439,4 +442,12 @@ window.addEventListener("DOMContentLoaded", () => {
         const data = await response.text();
         console.log("Front response: ", data);
       });
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+    const chevron = document.getElementById('more-firm')
+    chevron.addEventListener('click', () => {
+        const moreInfo = document.getElementById('more-info');
+        moreInfo.classList.toggle('hidden');
+    });
 });
