@@ -453,7 +453,6 @@ if(window.location.href.includes('item')) {
             moreInfo.classList.toggle('hidden');
             if(moreInfo.classList.contains('hidden')) {
                 chevron.style.rotate = '0deg';
-                console.log('RUN');
             } else {
                 chevron.style.rotate = '180deg';
             }

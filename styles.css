@@ -115,3 +115,73 @@ body {
     background-size: 50%;
     background-repeat: no-repeat;
 }
+
+@media (min-width: 1279px) {
+    #buy {
+    background-image: url('./img/buy.svg');
+    background-position-y: 10%;
+    background-position-x: 75%;
+    background-size: 40%;
+    background-repeat: no-repeat;
+}
+}
+
+@media (min-width: 1350px) {
+    #buy {
+    background-image: url('./img/buy.svg');
+    background-position-y: -10%;
+    background-position-x: 80%;
+    background-size: 44%;
+    background-repeat: no-repeat;
+}
+}
+
+@media (min-width: 1530px) {
+    #buy {
+    background-image: url('./img/buy.svg');
+    background-position-y: -5%;
+    background-position-x: 80%;
+    background-size: 36%;
+    background-repeat: no-repeat;
+}
+}
+
+@media (max-width: 766px) {
+    #buy {
+    background-image: url('./img/buy.svg');
+    background-position-y: 5%;
+    background-position-x: 80%;
+    background-size: 40%;
+    background-repeat: no-repeat;
+}
+
+    #connect {
+        background-image: url(./img/connect-blobs.svg);
+
+        background-position-x: 130%;
+        background-size: 40%;
+        background-repeat: no-repeat;
+    }
+
+}
+
+@media (max-width: 420px) {
+    #buy {
+    background-image: url('./img/buy.svg');
+    background-position-y: 15%;
+    background-position-x: 80%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+#compare {
+    background-image: url('./img/compare.svg') ;
+    
+    background-position-y: center;
+    background-position-x: 3%;
+    background-size: 40%;
+    background-repeat: no-repeat;
+}
+
+
+}
