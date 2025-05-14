@@ -444,10 +444,19 @@ window.addEventListener("DOMContentLoaded", () => {
       });
 });
 
-window.addEventListener("DOMContentLoaded", () => {
-    const chevron = document.getElementById('more-firm')
-    chevron.addEventListener('click', () => {
-        const moreInfo = document.getElementById('more-info');
-        moreInfo.classList.toggle('hidden');
+if(window.location.href.includes('item')) {
+    window.addEventListener("DOMContentLoaded", () => {
+
+        const chevron = document.getElementById('more-firm')
+        chevron.addEventListener('click', () => {
+            const moreInfo = document.getElementById('more-info');
+            moreInfo.classList.toggle('hidden');
+            if(moreInfo.classList.contains('hidden')) {
+                chevron.style.rotate = '0deg';
+                console.log('RUN');
+            } else {
+                chevron.style.rotate = '180deg';
+            }
+        });
     });
-});
+}
