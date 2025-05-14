@@ -171,7 +171,7 @@ async function loadProperty() {
 
     loadDescription();
 }
-
+/*
 function loadDescription() {
     const descriptionElement = document.getElementById('item-description');
     descriptionElement.addEventListener('click', () => {
@@ -185,7 +185,7 @@ function loadDescription() {
         }
     })
 }
-
+*/
 async function loadMap(city, state) {
     const geoSearchProvider = new GeoSearch.OpenStreetMapProvider();
 
