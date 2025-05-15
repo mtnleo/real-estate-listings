@@ -95,7 +95,7 @@ function formatPrice(price) {
 // Insert the DB information
 
 async function getClickedProperty(id) {
-    const url = `real-estate-listings-production-0335.up.railway.app/properties/${id}`;
+    const url = `https://real-estate-listings-production-0335.up.railway.app/${id}`;
     let response = await fetch(url);
 
     if (!response.ok) {
@@ -115,7 +115,7 @@ async function getClickedProperty(id) {
 
 
 async function loadFeaturedProperties() {
-    const url = 'real-estate-listings-production-0335.up.railway.app/featured-properties';
+    const url = 'https://real-estate-listings-production-0335.up.railway.app/featured-properties';
     let response = await fetch(url);
     
 
@@ -145,7 +145,7 @@ async function loadProperty() {
     console.log(id);
 
     // Paste all the data on the DOM
-    let response_p = await fetch(`real-estate-listings-production-0335.up.railway.app/properties/${id}`);
+    let response_p = await fetch(`https://real-estate-listings-production-0335.up.railway.app/properties/${id}`);
     if(!response_p.ok) {
         console.log("There was a problem loading the property object.");
     }
@@ -157,7 +157,7 @@ async function loadProperty() {
     }
 
     // Get and paste the Seller's object
-    let response_f = await fetch(`real-estate-listings-production-0335.up.railway.app/firms-p/${id}`);
+    let response_f = await fetch(`https://real-estate-listings-production-0335.up.railway.app/firms-p/${id}`);
 
     if(!response_f.ok) {
         console.log("There was a problem loading the firm object.");
@@ -344,7 +344,7 @@ async function loadListingHtml(listingObject) {
 }
 
 async function loadAllListings() {
-    const url = 'http://127.0.0.1:8080/properties/'
+    const url = 'https://real-estate-listings-production-0335.up.railway.app/properties/'
     let response = await fetch(url);
     if(!response.ok) {
         console.log("There was a problem loading the property object.");
@@ -411,7 +411,7 @@ window.addEventListener("DOMContentLoaded", () => {
     
         const email = document.getElementById('email').value;
     
-        const response = await fetch('real-estate-listings-production-0335.up.railway.app/subscribe', {
+        const response = await fetch('https://real-estate-listings-production-0335.up.railway.app/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email }),
