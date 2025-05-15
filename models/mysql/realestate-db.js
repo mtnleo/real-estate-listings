@@ -2,23 +2,24 @@ import mysql from 'mysql2'; // Important to put the /promise to use promises ins
 import dotenv from 'dotenv';
 dotenv.config();
 
-/* Information that is required by Mysql2 to establish connection
+// .env version
+/*
 const config = { 
-    host: 'localhost', // 127.0.0.1 if this doesn't work
-    user: 'root',
+    host: process.env.OLD_MYSQL_HOST, // 127.0.0.1 if this doesn't work
+    user: process.env.OLD_MYSQL_USER,
     port: 3306,
-    password: '',
-    database: 'RealEstate_DB'
+    password: process.env.OLD_MYSQL_PASSWORD,
+    database: process.env.OLD_MYSQL_DATABASE
 }
 */
+// Trying railway
 
-// .env version
 const config = { 
-    host: process.env.MYSQL_HOST ?? 'localhost', // 127.0.0.1 if this doesn't work
-    user: process.env.MYSQL_USER ?? 'root',
-    port: 3306,
-    password: process.env.MYSQL_PASSWORD ?? '',
-    database: process.env.MYSQL_DATABASE ?? 'RealEstate_DB'
+    host: process.env.MYSQLHOST, 
+    user: process.env.MYSQLUSER ?? 'root',
+    port: process.env.MYSQLPORT ?? 3306,
+    password: process.env.MYSQLPASSWORD ?? '',
+    database: process.env.MYSQLDATABASE
 }
 
 // We provide mysql2 the config information for the connection

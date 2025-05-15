@@ -169,23 +169,7 @@ async function loadProperty() {
         loadFirm(firmObject[0]);
     }
 
-    loadDescription();
 }
-/*
-function loadDescription() {
-    const descriptionElement = document.getElementById('item-description');
-    descriptionElement.addEventListener('click', () => {
-        if(descriptionElement.classList.contains('line-clamp-3')) {
-            descriptionElement.classList.add('line-clamp-none');
-            descriptionElement.classList.remove('line-clamp-3');
-        }
-        else {
-            descriptionElement.classList.add('line-clamp-3');
-            descriptionElement.classList.remove('line-clamp-none');
-        }
-    })
-}
-*/
 async function loadMap(city, state) {
     const geoSearchProvider = new GeoSearch.OpenStreetMapProvider();
 
