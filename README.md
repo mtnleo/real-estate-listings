@@ -1,11 +1,13 @@
 # 🪴 Hearthly - RE Full-Stack web
 
 ## 🏡 What is Hearthly?
-Hearthly is a full-stack website for Real Estate listings.
+[Hearthly](https://hearthly-ten.vercel.app/index.html) is a full-stack website for Real Estate listings.
 It can be used as a template for a Real Estate website where people can find their dream home.
 
 <img width="1326" alt="image" src="https://github.com/user-attachments/assets/ea790f38-12d3-4cd0-966c-80f1d9d39364" />
 
+
+[Access Hearthly](https://hearthly-ten.vercel.app/index.html)
 
 ## 👨🏻‍💻 What's the tech stack?
 Hearthly relies on:
@@ -21,7 +23,7 @@ Hearthly relies on:
 ### Back-end
 - NodeJS
 - ExpressJS
-- Zod authentication
+- Zod validation
 
 ### Database
 - MySQL
