@@ -259,6 +259,8 @@ async function loadListingHtml(listingObject) {
     mainDiv.classList.add("drop-shadow-lg");
     mainDiv.classList.add("drop-shadow-gray-50/20");
 
+    mainDiv.style = 'justify-self: center;'
+
     mainA.href = `item.html?id=${listingObject.id}`;
 
     listingImg.classList.add("object-cover")
