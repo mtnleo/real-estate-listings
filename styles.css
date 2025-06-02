@@ -14,6 +14,23 @@ body {
     background-repeat: no-repeat;
     background-position-y: -25rem;
     background-position-x: 5rem;
+    transition: 0.25s;
+}
+
+#cta:hover {
+    background-position-y: -27rem;
+    background-position-x: 6rem;
+    transform: scale(1.01);
+    transition: 0.25s;
+}
+
+.why-us-card {
+    transition: 0.25s;
+}
+
+.why-us-card:hover {
+    transform: translateY(-6px);
+    transition: 0.25s;
 }
 
 .title {
