@@ -6,9 +6,9 @@
 
 /* *************** LOAD PROPERTIES IN INDEX *************** */
 
-function changePropertyImgSrc(imgNumber, newUrl) {
+function changePropertyImgSrcStyle(imgNumber, newUrl, newId) {
     document.getElementById("p_img_" + imgNumber).src = newUrl;
-
+    document.getElementById("p_img_" + imgNumber).style = `view-transition-name: ${newId}`;
 }
 
 function changePropertyTitle(itemNumber, newName) {
@@ -44,8 +44,10 @@ function changePropertyButton(buttonNumber, newId) {
 
 /* *************** LOAD PROPERTY IN ITEM *************** */
 
-function loadPropertyInfo(propertyObject) {
-    document.getElementById('item-thumbnail').src = propertyObject.thumbnail;
+function loadPropertyInfo(propertyObject, id) {
+    const thumbnailElement = document.getElementById('item-thumbnail')
+    thumbnailElement.src = propertyObject.thumbnail;
+    thumbnailElement.style = `view-transition-name: ${id}`;
     document.getElementById('item-title').textContent = propertyObject.title;
     document.getElementById('item-price').textContent = formatPrice(propertyObject.price);
     document.getElementById('item-city').textContent = propertyObject.city + ',';
@@ -95,7 +97,8 @@ function formatPrice(price) {
 // Insert the DB information
 
 async function getClickedProperty(id) {
-    const url = `https://real-estate-listings-production-0335.up.railway.app/${id}`;
+    // const url = `https://real-estate-listings-production-0335.up.railway.app/${id}`;
+    const url = `http://127.0.0.1:8080/${id}`;
     let response = await fetch(url);
 
     if (!response.ok) {
@@ -115,7 +118,8 @@ async function getClickedProperty(id) {
 
 
 async function loadFeaturedProperties() {
-    const url = 'https://real-estate-listings-production-0335.up.railway.app/featured-properties';
+    // const url = 'https://real-estate-listings-production-0335.up.railway.app/featured-properties';
+    const url = 'http://127.0.0.1:8080/featured-properties';
     let response = await fetch(url);
     
 
@@ -126,7 +130,7 @@ async function loadFeaturedProperties() {
         let featured_houses = await response.json();
 
         for (let i = 0; i < 4; i++) {
-            changePropertyImgSrc(i+1, featured_houses[i].thumbnail);
+            changePropertyImgSrcStyle(i+1, featured_houses[i].thumbnail, featured_houses[i].id);
             changePropertyTitle(i+1, featured_houses[i].title);
             changePropertyButton(i+1, featured_houses[i].id)
             changePropertyCity(i+1, featured_houses[i].city);
@@ -145,19 +149,22 @@ async function loadProperty() {
     console.log(id);
 
     // Paste all the data on the DOM
-    let response_p = await fetch(`https://real-estate-listings-production-0335.up.railway.app/properties/${id}`);
+    // let response_p = await fetch(`https://real-estate-listings-production-0335.up.railway.app/properties/${id}`);
+    let response_p = await fetch(`http://127.0.0.1:8080/properties/${id}`);
+
     if(!response_p.ok) {
         console.log("There was a problem loading the property object.");
     }
     else {
         let [propertyObject] = await response_p.json();
 
-        loadPropertyInfo(propertyObject);
+        loadPropertyInfo(propertyObject, id);
         loadMap(propertyObject.city, propertyObject.state);
     }
 
     // Get and paste the Seller's object
-    let response_f = await fetch(`https://real-estate-listings-production-0335.up.railway.app/firms-p/${id}`);
+    // let response_f = await fetch(`https://real-estate-listings-production-0335.up.railway.app/firms-p/${id}`);
+    let response_f = await fetch(`http://127.0.0.1:8080/firms-p/${id}`);
 
     if(!response_f.ok) {
         console.log("There was a problem loading the firm object.");
@@ -271,6 +278,8 @@ async function loadListingHtml(listingObject) {
     listingImg.classList.add("hover:scale-105")
     listingImg.classList.add("overflow-hidden")
 
+    listingImg.style = `view-transition-name: ${listingObject.id}`
+
     listingBottomDiv.classList.add("p-4");
 
     listingPriceYearDiv.classList.add("flex");
@@ -346,7 +355,8 @@ async function loadListingHtml(listingObject) {
 }
 
 async function loadAllListings() {
-    const url = 'https://real-estate-listings-production-0335.up.railway.app/properties/'
+    // const url = 'https://real-estate-listings-production-0335.up.railway.app/properties/'
+    const url = 'http://127.0.0.1:8080/properties/'
     let response = await fetch(url);
     if(!response.ok) {
         console.log("There was a problem loading the property object.");
@@ -413,7 +423,8 @@ window.addEventListener("DOMContentLoaded", () => {
     
         const email = document.getElementById('email').value;
     
-        const response = await fetch('https://real-estate-listings-production-0335.up.railway.app/subscribe', {
+        // const response = await fetch('https://real-estate-listings-production-0335.up.railway.app/subscribe', {
+        const response = await fetch('http://127.0.0.1:8080/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email }),

@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // .env version
-/*
+
 const config = { 
     host: process.env.OLD_MYSQL_HOST, // 127.0.0.1 if this doesn't work
     user: process.env.OLD_MYSQL_USER,
@@ -11,16 +11,16 @@ const config = {
     password: process.env.OLD_MYSQL_PASSWORD,
     database: process.env.OLD_MYSQL_DATABASE
 }
-*/
+
 // Trying railway
 
-const config = { 
-    host: process.env.MYSQLHOST, 
-    user: process.env.MYSQLUSER ?? 'root',
-    port: process.env.MYSQLPORT ?? 3306,
-    password: process.env.MYSQLPASSWORD ?? '',
-    database: process.env.MYSQLDATABASE
-}
+// const config = { 
+//     host: process.env.MYSQLHOST, 
+//     user: process.env.MYSQLUSER ?? 'root',
+//     port: process.env.MYSQLPORT ?? 3306,
+//     password: process.env.MYSQLPASSWORD ?? '',
+//     database: process.env.MYSQLDATABASE
+// }
 
 // We provide mysql2 the config information for the connection
 const pool = mysql.createPool(config).promise(); 
